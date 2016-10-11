@@ -71,21 +71,22 @@ class RestosController extends Controller
     {
         //dd($request->toArray());
         $this->validate($request, $this->rules);
-        $address = new Address();
-        $address->rue = $request->input('rue');
-        $address->numero = $request->input('numero');
-        $address->codepostal = $request->input('zip');
-        $address->commune = $request->input('commune');
-        $address->latitude = $request->input('latitude');
-        $address->longitude = $request->input('longitude');
-
         $data = $this->getRequest($request);
+
+        $address = new Address();
+        $address->rue = $data->input('rue');
+        $address->numero = $data->input('numero');
+        $address->codepostal = $data->input('zip');
+        $address->commune = $data->input('commune');
+        $address->latitude = $data->input('latitude');
+        $address->longitude = $data->input('longitude');
+
         $resto = new Resto();
-        $resto->name = $request->input('name');
-        $resto->mainphoto = $request->input('mainphoto');
-        $resto->tel = $request->input('tel');
-        $resto->website = $request->input('website');
-        $resto->facebook = $request->input('facebook');
+        $resto->name = $data->input('name');
+        $resto->mainphoto = $data->input('mainphoto');
+        $resto->tel = $data->input('tel');
+        $resto->website = $data->input('website');
+        $resto->facebook = $data->input('facebook');
         $address->save();
         $resto->address()->associate($address);
         $resto->save();
