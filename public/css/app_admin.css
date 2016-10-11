@@ -1,0 +1,21 @@
+body{
+    padding-top: 0px;
+}
+
+.navbar-default{
+    background-color: #171717;
+}
+
+.navbar-brand{
+    padding: 3px 15px;
+}
+
+.file-field .btn {
+    float: left;
+    line-height: inherit;
+}
+
+.bar {
+    height: 18px;
+    background: green;
+}

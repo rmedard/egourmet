@@ -1,0 +1,38 @@
+@extends('admin.layouts.master')
+
+@section('title', trans('gui.users'))
+
+@section('content')
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{trans('gui.users_management')}}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>#</td>
+                        <td><b>Noms</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Date de création</b></td>
+                        <td><b>Date de mise à jour</b></td>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach($users as $user)
+                    <tr>
+                        <td>{{$loop->index + 1}}</td>
+                        <td>{{$user->name}}</td>
+                        <td>{{$user->email}}</td>
+                        <td>{{$user->created_at}}</td>
+                        <td>{{$user->updated_at}}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+@endsection

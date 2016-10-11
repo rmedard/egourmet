@@ -1,0 +1,55 @@
+<?php
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
+|
+*/
+
+//Route::get('/', 'HomeController@home')->name('home.home');
+
+Route::get('/', 'HomeController@homeform')->name('home.home');
+
+Route::get('/search_dish', 'HomeController@dish_autocomplete')->name('home.dish_autocomplete');
+
+Route::get('/search_resto', 'HomeController@resto_autocomplete')->name('home.resto_autocomplete');
+
+Route::get('/search', 'HomeController@search')->name('home.search');
+
+Route::post('/persist', 'HomeController@persist')->name('home.persist');
+
+Route::get('/about', function(){
+    return view('pages.about');
+});
+
+Auth::routes();
+
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
+
+    Route::get('/', 'PagesController@dashboard')->name('admin');
+
+    Route::resource('dishes', 'DishesController');
+
+    Route::resource('restos', 'RestosController');
+
+    Route::resource('cuisines', 'CuisinesController');
+
+    Route::resource('ratings', 'RatingsController');
+
+    Route::get('messages', 'MessagesController@index')->name('messages.index');
+
+    Route::resource('users', 'UsersController');
+
+    Route::get('settings', function(){
+        return view('admin.pages.settings');
+    })->name('settings');
+});
+
+Route::post('messages/store', 'MessagesController@store')->name('messages.store');
