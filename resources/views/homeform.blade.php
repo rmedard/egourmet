@@ -2,40 +2,43 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-2"></div>
-        <div class="col-md-8">
-            <!--Form with header-->
-            <div class="card">
-                <div class="card-block">
+        <div class="col-md-offset-2 col-md-8">
+            <!--Header-->
+            <h1 class="page-header text-center">Donnez-nous votre évaluation</h1>
+            <div class="well well-lg">
+                {!! Form::open(['route' => 'restos.store', 'files' => true, 'id' => 'resto-form-id']) !!}
+                <div class="md-form form-group" id="search-dish-group" style="width: 100%">
+                    <input type="text" id="search-dish" class="form-control validate" name="searchdish" placeholder="Chercher un plat...">
+                    <input type="hidden" id="selected-dish" name="selecteddish">
+                </div>
 
-                    <!--Header-->
-                    <div class="form-header blue-gradient">
-                        <h3><i class="fa fa-user"></i> Donnez-nous votre évaluation</h3>
-                    </div>
+                <div class="md-form form-group" id="search-resto-group" style="width: 100%">
+                    <input type="text" id="search-resto" class="form-control validate" name="searchresto" placeholder="Chercher un restaurant...">
+                    <input type="hidden" id="selected-resto" name="selectedresto">
+                </div>
 
-                    <!--Body-->
-                    <div class="md-form">
-                        <input type="text" id="form3" class="form-control">
-                        <label for="form3">Your name</label>
-                    </div>
-                    <div class="md-form">
-                        <input type="text" id="form2" class="form-control">
-                        <label for="form2">Your email</label>
-                    </div>
+                <div class="md-form rate-input" style="font-size: 30px">
+                    <label style="vertical-align: middle" for="temp-rating">Evaluez</label>
+                    <input type="hidden" class="rating" value="2" data-fractions="2" name="rating-value" id="temp-rating"/>
+                </div>
 
-                    <div class="md-form">
-                        <input type="password" id="form4" class="form-control">
-                        <label for="form4">Your password</label>
-                    </div>
-
-                    <div class="text-xs-center">
-                        <button class="btn btn-indigo">Sauvegarder</button>
+                <div class="md-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" id="temp-email" class="form-control" placeholder="Votre email">
+                        </div>
+                        <div class="col-md-6">
+                            <textarea type="text" class="md-textarea rating-comment-input" name="rating-comment" placeholder="Votre avis"></textarea>
+                        </div>
                     </div>
 
                 </div>
+
+                <div class="text-xs-center">
+                    <button class="btn btn-indigo">Sauvegarder</button>
+                </div>
+                {!! Form::close() !!}
             </div>
-            {!! Form::open() !!}
-            <!--/Form with header-->
         </div>
     </div>
 </div>
