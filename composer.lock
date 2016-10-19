@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0dda483d92c17176b29966c61be272df",
-    "content-hash": "51ca049bdc3705a75a3b167cb0919535",
+    "hash": "764879b7b618945e8dcc75275eb3f911",
+    "content-hash": "3cdb27fd60ae0f10e56d859e40a720f4",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.19.15",
+            "version": "3.19.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "83e9522a0a1abce0b1a0c2971428a5bd975a212d"
+                "reference": "089ce29c428ce330b8e9eba8bbe8f2bdbb8b8af5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/83e9522a0a1abce0b1a0c2971428a5bd975a212d",
-                "reference": "83e9522a0a1abce0b1a0c2971428a5bd975a212d",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/089ce29c428ce330b8e9eba8bbe8f2bdbb8b8af5",
+                "reference": "089ce29c428ce330b8e9eba8bbe8f2bdbb8b8af5",
                 "shasum": ""
             },
             "require": {
@@ -85,7 +85,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2016-10-13 18:56:16"
+            "time": "2016-10-18 20:29:12"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1068,16 +1068,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.3.18",
+            "version": "v5.3.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9bee167d173857c25966c19afdaa66f127ca6784"
+                "reference": "f1a5bb417b3e0d1949fe84617eacd1a14d75d7f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9bee167d173857c25966c19afdaa66f127ca6784",
-                "reference": "9bee167d173857c25966c19afdaa66f127ca6784",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f1a5bb417b3e0d1949fe84617eacd1a14d75d7f1",
+                "reference": "f1a5bb417b3e0d1949fe84617eacd1a14d75d7f1",
                 "shasum": ""
             },
             "require": {
@@ -1159,7 +1159,7 @@
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (~2.0).",
                 "symfony/css-selector": "Required to use some of the crawler integration testing tools (3.1.*).",
                 "symfony/dom-crawler": "Required to use most of the crawler integration testing tools (3.1.*).",
-                "symfony/psr-http-message-bridge": "Required to psr7 bridging features (0.2.*)."
+                "symfony/psr-http-message-bridge": "Required to use psr7 bridging features (0.2.*)."
             },
             "type": "library",
             "extra": {
@@ -1192,7 +1192,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-10-08 01:51:20"
+            "time": "2016-10-17 19:35:14"
         },
         {
             "name": "laravelcollective/html",
@@ -1250,20 +1250,20 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.28",
+            "version": "1.0.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a9663643ff2d16d7f66ed1e0d3212c5491bc9044"
+                "reference": "75138bb14160f3ba963750aa95e08d1d394fb198"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a9663643ff2d16d7f66ed1e0d3212c5491bc9044",
-                "reference": "a9663643ff2d16d7f66ed1e0d3212c5491bc9044",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/75138bb14160f3ba963750aa95e08d1d394fb198",
+                "reference": "75138bb14160f3ba963750aa95e08d1d394fb198",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.5.9"
             },
             "conflict": {
                 "league/flysystem-sftp": "<1.0.6"
@@ -1329,7 +1329,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-10-07 12:20:37"
+            "time": "2016-10-18 16:20:02"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -1701,16 +1701,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.2",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/088c04e2f261c33bed6ca5245491cfca69195ccf",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -1745,7 +1745,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-04-03 06:00:07"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "psr/http-message",
@@ -1998,16 +1998,16 @@
         },
         {
             "name": "santigarcor/laratrust",
-            "version": "3.0.7",
+            "version": "3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/santigarcor/laratrust.git",
-                "reference": "0be6f36f8dcccd92f7d4ab76373d5018b91a74e1"
+                "reference": "bbccc46c9ea51d124cd6fbb86d7091b42590dcaf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/0be6f36f8dcccd92f7d4ab76373d5018b91a74e1",
-                "reference": "0be6f36f8dcccd92f7d4ab76373d5018b91a74e1",
+                "url": "https://api.github.com/repos/santigarcor/laratrust/zipball/bbccc46c9ea51d124cd6fbb86d7091b42590dcaf",
+                "reference": "bbccc46c9ea51d124cd6fbb86d7091b42590dcaf",
                 "shasum": ""
             },
             "require": {
@@ -2072,7 +2072,7 @@
                 "rbac",
                 "roles"
             ],
-            "time": "2016-10-12 20:42:22"
+            "time": "2016-10-18 20:18:39"
         },
         {
             "name": "swiftmailer/swiftmailer",

@@ -12,7 +12,8 @@
         "nicolaslopezj/searchable": "1.*",
         "santigarcor/laratrust": "3.0.*",
         "league/flysystem-aws-s3-v3": "~1.0",
-        "intervention/image": "^2.3"
+        "intervention/image": "^2.3",
+        "paragonie/random_compat": "^1.4"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
