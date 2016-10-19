@@ -29,6 +29,8 @@
             .content {
                 text-align: center;
                 display: inline-block;
+                width: 100%;
+                background: #353535;
             }
 
             .title {
@@ -38,12 +40,12 @@
         </style>
     </head>
     <body>
-        <div class="container" style="background: #555">
+        <div class="container">
             <div class="content">
                 <div class="title">eGourmet est en maintenance.</div>
                 <p>Nous serons de retour dans quelques instant.</p>
+                <img src="/images/core/egourmet_logo.png">
             </div>
-            <div><img src="/images/core/egourmet_logo.png"></div>
         </div>
     </body>
 </html>
