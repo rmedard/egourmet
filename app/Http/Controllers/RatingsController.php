@@ -12,25 +12,11 @@ use App\Http\Requests;
 
 class RatingsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
-    }
+    private $rules = [
+        'searchdish' => ['required'],
+        'searchresto' => ['required'],
+        'rating-email' => ['required', 'email'],
+    ];
 
     /**
      * Store a newly created resource in storage.
@@ -40,51 +26,15 @@ class RatingsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, $this->rules, array(
+                'searchdish.required' => trans('gui.searchdish_required'),
+                'searchresto.required' => trans('gui.searchresto_required'),
+                'rating-email.required' => trans('gui.rating_email_required'),
+                'rating-email.email' => trans('gui.rating_email_email')
+            ));
 
+        $dish = Dish::find($request->selecteddish);
+        $resto = Resto::find($request->selectedresto);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

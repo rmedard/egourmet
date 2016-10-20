@@ -11,8 +11,6 @@
 |
 */
 
-//Route::get('/', 'HomeController@home')->name('home.home');
-
 Route::get('/', 'HomeController@homeform')->name('home.home');
 
 Route::get('/search_dish', 'HomeController@dish_autocomplete')->name('home.dish_autocomplete');
@@ -22,6 +20,8 @@ Route::get('/search_resto', 'HomeController@resto_autocomplete')->name('home.res
 Route::get('/search', 'HomeController@search')->name('home.search');
 
 Route::post('/persist', 'HomeController@persist')->name('home.persist');
+
+Route::post('/', 'RatingsController@store')->name('ratings.store');
 
 Route::get('/about', function(){
     return view('pages.about');
@@ -40,8 +40,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
     Route::resource('restos', 'RestosController');
 
     Route::resource('cuisines', 'CuisinesController');
-
-    Route::resource('ratings', 'RatingsController');
 
     Route::get('messages', 'MessagesController@index')->name('messages.index');
 

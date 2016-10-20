@@ -73,24 +73,28 @@ class HomeController extends Controller
     }
 
     public function dish_autocomplete(Request $request){
-        $message = null;
-        $results = array();
-        $dishItem = $request->input(['term']);
-        $dishes = Dish::where('name','LIKE','%'.$dishItem.'%')->where('enabled', 1)->take(5)->get();
-        foreach ($dishes as $dish) {
-            $results[] = ['id'=>$dish->id,'value'=>$dish->name];
+        if($request->ajax()){
+            $message = null;
+            $results = array();
+            $dishItem = $request->input(['term']);
+            $dishes = Dish::where('name','LIKE','%'.$dishItem.'%')->where('enabled', 1)->take(5)->get();
+            foreach ($dishes as $dish) {
+                $results[] = ['id'=>$dish->id,'value'=>$dish->name];
+            }
+            return response()->json($results);
         }
-        return response()->json($results);
     }
 
     public function resto_autocomplete(Request $request){
-        $results = array();
-        $restoItem = $request->input(['term']);
-        $restos = Resto::where('name','LIKE','%'.$restoItem.'%')->where('enabled', 1)->take(5)->get();
-        foreach ($restos as $resto) {
-            $results[] = ['id'=>$resto->id,'value'=>$resto->name];
+        if($request->ajax()){
+            $results = array();
+            $restoItem = $request->input(['term']);
+            $restos = Resto::where('name','LIKE','%'.$restoItem.'%')->where('enabled', 1)->take(5)->get();
+            foreach ($restos as $resto) {
+                $results[] = ['id'=>$resto->id,'value'=>$resto->name];
+            }
+            return response()->json($results);
         }
-        return response()->json($results);
     }
 
     public function search(Request $request){
