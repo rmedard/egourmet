@@ -22,6 +22,8 @@ $('.rating').rating({
     empty: 'glyphicon glyphicon-heart-empty'
 });
 
+$('.alert-success').delay(3000).slideUp(300);
+
 $('.rate-email').hide();
 $('.resto-main-details').hide();
 

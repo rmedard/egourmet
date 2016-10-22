@@ -51,17 +51,11 @@ return [
     'ratings' => 'Votes',
     'address' => 'Adresse',
     'website' => 'Website',
-    'facebook' => 'Facebook',
+    'facebook' => 'Page facebook',
     'tel' => 'Téléphone',
     'options' => 'Options',
     'delete' => 'Supprimer',
     'edit' => 'Modifier',
     'choose_photo' => 'Ajouter une photo',
-
-    /*Error messages*/
-    'searchdish_required' => 'Il faut préciser le plat',
-    'searchresto_required' => 'Il faut préciser le restaurant',
-    'rating_email_required' => 'Votre email est obligatoire',
-    'rating_email_email' => 'Votre email n\' est pas correct'
 
 ];

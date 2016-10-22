@@ -69,24 +69,29 @@ class RestosController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->toArray());
         $this->validate($request, $this->rules);
         $data = $this->getRequest($request);
 
         $address = new Address();
-        $address->rue = $data->input('rue');
-        $address->numero = $data->input('numero');
-        $address->codepostal = $data->input('zip');
-        $address->commune = $data->input('commune');
-        $address->latitude = $data->input('latitude');
-        $address->longitude = $data->input('longitude');
+        $address->rue = $data->get('rue');
+        $address->numero = $data->get('numero');
+        $address->codepostal = $data->get('zip');
+        $address->commune = $data->get('commune');
+
+        $address_str = $data->get('rue').' '.$data->get('numero').', '.$data->get('zip').' '.$data->get('commune');
+        $geo = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($address_str).'&sensor=false');
+        $geo = json_decode($geo, true);
+        if($geo['status'] = 'OK'){
+            $address->latitude = $geo['results'][0]['geometry']['location']['lat'];
+            $address->longitude = $geo['results'][0]['geometry']['location']['lng'];
+        }
 
         $resto = new Resto();
-        $resto->name = $data->input('name');
-        $resto->mainphoto = $data->input('mainphoto');
-        $resto->tel = $data->input('tel');
-        $resto->website = $data->input('website');
-        $resto->facebook = $data->input('facebook');
+        $resto->name = $data->get('name');
+        $resto->mainphoto = $data->get('mainphoto');
+        $resto->tel = $data->get('tel');
+        $resto->website = $data->get('website');
+        $resto->facebook = $data->get('facebook');
         $address->save();
         $resto->address()->associate($address);
         $resto->save();
@@ -153,6 +158,6 @@ class RestosController extends Controller
             $path = Storage::putFileAs($this->upload_dir, $img->psrResponse(), $filename, 'public');
             $data['mainphoto'] = $path;
         }
-        return $data;
+        return collect($data);
     }
 }

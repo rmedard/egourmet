@@ -20,7 +20,6 @@ class CreateAddressesTable extends Migration
             $table->string('codepostal', 5);
             $table->string('commune', 50);
             $table->string('pays', 20)->default('Belgique');
-            $table->boolean('exists')->default(1);
             $table->timestamps();
         });
     }

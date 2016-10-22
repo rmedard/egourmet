@@ -23,7 +23,4 @@
             {!! Form::close() !!}
         </div>
     </div>
-    <script src="/assets/jquery/jquery-2.2.4.min.js" type="application/javascript"></script>
-    <script src="/assets/gmaps/gmaps.min.js" type="application/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRgjjnfpVbukBemb79MpTNhHn1usipbNI"></script>
 @endsection

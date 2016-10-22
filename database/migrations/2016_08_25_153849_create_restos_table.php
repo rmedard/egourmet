@@ -16,7 +16,7 @@ class CreateRestosTable extends Migration
         Schema::create('restos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('address_id')->unsigned()->index();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('mainphoto')->nullable();
             $table->string('tel', 25)->nullable();
             $table->string('website', 40)->nullable();

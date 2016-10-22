@@ -125,6 +125,6 @@ class HomeController extends Controller
     }
 
     public function homeform(){
-        return view('homeform');
+        return view('homeform', compact('message'));
     }
 }

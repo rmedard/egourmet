@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Dish;
-use App\DishResto;
 use App\Rating;
 use App\Resto;
 use Illuminate\Http\Request;
@@ -13,9 +12,9 @@ use App\Http\Requests;
 class RatingsController extends Controller
 {
     private $rules = [
-        'searchdish' => ['required'],
-        'searchresto' => ['required'],
-        'rating-email' => ['required', 'email'],
+        'searchdish' => ['required', 'exists:dishes,name'],
+        'searchresto' => ['required', 'exists:restos,name'],
+        'ratingemail' => ['required', 'email'],
     ];
 
     /**
@@ -27,14 +26,23 @@ class RatingsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, $this->rules, array(
-                'searchdish.required' => trans('gui.searchdish_required'),
-                'searchresto.required' => trans('gui.searchresto_required'),
-                'rating-email.required' => trans('gui.rating_email_required'),
-                'rating-email.email' => trans('gui.rating_email_email')
+            'searchdish.required' => trans('messages.searchdish_required'),
+            'searchdish.exists' => trans('messages.searchdish_exists'),
+            'searchresto.required' => trans('messages.searchresto_required'),
+            'searchresto.exists' => trans('messages.searchresto_exists'),
+            'ratingemail.required' => trans('messages.rating_email_required'),
+            'ratingemail.email' => trans('messages.rating_email_email'),
             ));
-
-        $dish = Dish::find($request->selecteddish);
         $resto = Resto::find($request->selectedresto);
+        $resto->dishes()->syncWithoutDetaching([$request->selecteddish => ['enabled' => true]]);
+        $pivotId = $resto->dishes()->find($request->selecteddish)->pivot->id;
+        $rating = new Rating();
+        $rating->dish_resto_id = $pivotId;
+        $rating->value = $request->ratingvalue;
+        $rating->email = $request->ratingemail;
+        $rating->comment = $request->ratingcomment;
+        $rating->save();
+        session()->flash('flash_message', trans('messages.declaration_success'));
+        return view('homeform');
     }
-
 }

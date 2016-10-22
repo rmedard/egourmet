@@ -62,6 +62,6 @@
     <label for="resto-form-enabled">{{trans('gui.model.enabled')}}</label>
 </fieldset>
 <div>
-    <a class="btn btn-unique btn-rounded" id="resto-form-send">{{trans('gui.save')}}</a>
+    <button class="btn btn-unique btn-rounded" type="submit">{{trans('gui.save')}}</button>
     <a class="btn btn-danger btn-rounded" href="{{route('restos.index')}}">{{trans('gui.cancel')}}</a>
 </div>
