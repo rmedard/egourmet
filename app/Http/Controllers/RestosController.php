@@ -9,6 +9,7 @@ use App\Repositories\Contracts\RestosContract;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
@@ -18,9 +19,10 @@ class RestosController extends Controller
     protected $restosRepo;
     protected $addressesRepo;
     private $upload_dir;
+    private $max_image_size;
 
     private $rules = [
-        'name' => ['required', 'min:3'],
+        'name' => ['required', 'unique:restos,name'],
         'rue' => ['required'],
         'numero' => ['required'],
         'commune' => ['required'],
@@ -69,7 +71,14 @@ class RestosController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules);
+        $this->validate($request, $this->rules, array(
+            'name.required' => trans('messages.restoname_required'),
+            'name.unique' => trans('messages.restoname_unique'),
+            'rue.required' => trans('messages.restorue_required'),
+            'numero.required' => trans('messages.restonumero_exists'),
+            'commune.required' => trans('messages.restocommune_required'),
+            'zip.required' => trans('messages.restozip_required')
+        ));
         $data = $this->getRequest($request);
 
         $address = new Address();
@@ -77,25 +86,18 @@ class RestosController extends Controller
         $address->numero = $data->get('numero');
         $address->codepostal = $data->get('zip');
         $address->commune = $data->get('commune');
+        $address->save();
 
-        $address_str = $data->get('rue').' '.$data->get('numero').', '.$data->get('zip').' '.$data->get('commune');
-        $geo = file_get_contents('http://maps.googleapis.com/maps/api/geocode/json?address='.urlencode($address_str).'&sensor=false');
-        $geo = json_decode($geo, true);
-        if($geo['status'] = 'OK'){
-            $address->latitude = $geo['results'][0]['geometry']['location']['lat'];
-            $address->longitude = $geo['results'][0]['geometry']['location']['lng'];
-        }
-
+        //Use this to get the map view
+        //$address_str = $data->get('rue').'+'.$data->get('numero').',+'.$data->get('zip').'+'.$data->get('commune');
         $resto = new Resto();
         $resto->name = $data->get('name');
         $resto->mainphoto = $data->get('mainphoto');
         $resto->tel = $data->get('tel');
         $resto->website = $data->get('website');
         $resto->facebook = $data->get('facebook');
-        $address->save();
-        $resto->address()->associate($address);
         $resto->save();
-        $this->show($resto->id);
+        $resto->address()->associate($address)->save();
     }
 
     /**
@@ -107,7 +109,6 @@ class RestosController extends Controller
     public function show($id)
     {
         $resto = Resto::findOrFail($id);
-        dd($resto);
     }
 
     /**
@@ -151,12 +152,14 @@ class RestosController extends Controller
         $data = $req->all();
         if($req->hasFile('mainphoto')){
             $photoFile = $req->file('mainphoto');
-            $filename = 'resto_' . time() . $photoFile->getClientOriginalExtension();
-            $img = Image::make($filename)->fit(200, 200, function ($constraint) {
+            $filename = 'resto_' . time() . '.' . $photoFile->getClientOriginalExtension();
+            Image::make($photoFile)->fit(200, 200, function ($constraint) {
                 $constraint->upsize();
-            });
-            $path = Storage::putFileAs($this->upload_dir, $img->psrResponse(), $filename, 'public');
+            })->save('temp/'. $filename);
+            $s3 = Storage::disk('s3');
+            $path = $s3->putFileAs($this->upload_dir, new File('temp/' . $filename), $filename, 'public');
             $data['mainphoto'] = $path;
+            //Storage::disk('app_public')->delete('temp/' . $filename);
         }
         return collect($data);
     }

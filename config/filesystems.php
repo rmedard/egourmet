@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'app_public' => [
+            'driver' => 'local',
+            'root' => public_path(),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('S3_KEY'),

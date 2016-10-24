@@ -19,3 +19,8 @@ body{
     height: 18px;
     background: green;
 }
+
+/*Pagination*/
+.pagination > li > a, .pagination > li > span{
+    border: none;
+}

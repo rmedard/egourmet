@@ -263,3 +263,21 @@ p.copyright {
   box-shadow: none;
   border: none;
 }
+
+/*Pagination*/
+.pagination > li{
+  a{
+    border: none;
+  }
+  span{
+    border: none;
+  }
+}
+
+.modal-header{
+  color: white;
+  background: #3e3e3e;
+  button.close{
+    color: white;
+  }
+}

@@ -15,7 +15,7 @@ class CreateCuisinesTable extends Migration
     {
         Schema::create('cuisines', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }

@@ -15,6 +15,13 @@ return [
     'rating_email_required' => 'Votre email est obligatoire',
     'rating_email_email' => 'Votre email n\'est pas correct',
 
+    'restoname_required' => 'Il faut préciser le nom du restaurant',
+    'restoname_unique' => 'Le nom du restaurant existe déjà',
+    'restorue_required' => 'Il faut préciser la rue',
+    'restonumero_exists' => 'Il faut préciser le numéro de rue',
+    'restocommune_required' => 'Il faut préciser le nom de la commune',
+    'restozip_required' => 'Il faut préciser le code postal',
+
     /*Success messages*/
     'declaration_success' => 'Merci, votre déclaration est enregistée!'
 ];

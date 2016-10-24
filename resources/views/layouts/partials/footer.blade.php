@@ -13,8 +13,9 @@
 <!-- Rating -->
 <script src="/assets/bootstrap-rating/bootstrap-rating.min.js"></script>
 
-<!-- Materialize -->
+<!-- MDB -->
 <script src="/assets/mdb/js/mdb.min.js"></script>
-
+<!-- Jasny -->
+<script src="/assets/jasny/js/jasny-bootstrap.min.js"></script>
 <!-- Custom JS -->
 <script src="/js/custom.js"></script>

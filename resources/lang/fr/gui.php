@@ -15,6 +15,9 @@ return [
     'messages' => 'Messages',
     'users' => 'Utilisateurs',
     'user_messages' => 'Messages d\'utilisateurs',
+    'create_resto' => 'Créer un restaurant',
+    'create_dish' => 'Créer un plat',
+    'donnez_evaluation' => 'Donnez-nous votre évaluation',
 
     /*Addresse*/
     'street' => 'Rue',
@@ -57,5 +60,7 @@ return [
     'delete' => 'Supprimer',
     'edit' => 'Modifier',
     'choose_photo' => 'Ajouter une photo',
+    'changer' => 'Changer',
+    'remove' => 'Enlever'
 
 ];

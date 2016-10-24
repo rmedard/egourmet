@@ -8,19 +8,22 @@
         <title>eGourmet</title>
 
         <!-- Bootstrap -->
-        <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Materialize -->
-        <link href="assets/mdb/css/mdb.min.css" rel="stylesheet">
+        <link href="/assets/mdb/css/mdb.min.css" rel="stylesheet">
 
         <!-- Font Awesome -->
-        <link href="assets/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/assets/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
         <!-- iHover -->
-        <link href="assets/ihover/ihover.min.css" rel="stylesheet">
+        <link href="/assets/ihover/ihover.min.css" rel="stylesheet">
 
         <!-- jquery UI -->
-        <link href="assets/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+        <link href="/assets/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+        <!-- Jasny -->
+        <link href="/assets/jasny/css/jasny-bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom -->
         <link href="css/app.css" rel="stylesheet" type="text/css">

@@ -26,7 +26,7 @@
                 <tbody>
                 @foreach($dishes as $dish)
                     <tr>
-                        <td>{{$loop->index + 1}}</td>
+                        <td>{{(($dishes->currentPage() - 1) * $dishes->perPage()) + $loop->index + 1}}</td>
                         <?php $photo = empty($dish->mainphoto) ? Config::get('constants.nodish') : $dish->mainphoto ?>
                         <td>
                             {!! Html::image($photo, $dish->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
@@ -40,6 +40,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{ $dishes->links() }}
         </div>
     </div>
 @endsection

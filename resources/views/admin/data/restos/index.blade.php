@@ -32,7 +32,7 @@
                 <tbody>
                 @foreach($restos as $resto)
                     <tr>
-                        <td>{{$loop->index + 1}}</td>
+                        <td>{{(($restos->currentPage() - 1) * $restos->perPage()) + $loop->index + 1}}</td>
                         <?php $photo = empty($resto->mainphoto) ? Config::get('constants.noresto') : $resto->mainphoto ?>
                         <td>
                             {!! Html::image($photo, $resto->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
@@ -61,6 +61,7 @@
                 @endforeach
                 </tbody>
             </table>
+            {{ $restos->links() }}
         </div>
     </div>
 @endsection

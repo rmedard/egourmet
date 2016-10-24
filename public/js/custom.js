@@ -1,6 +1,7 @@
 /**
  * Created by Mrebero on 21/07/2016.
  */
+
 $('a[href^="#"]').click(function(){
     var the_id = $(this).attr("href");
 
@@ -139,6 +140,87 @@ $('#message-form-id').submit(function(e){
                     existingError.replaceWith(alertMessage);
                 }else{
                     $('#contact-form-block').prepend(alertMessage);
+                }
+            }
+        }
+    });
+});
+
+$('#resto-modal').on('hidden.bs.modal', function () {
+    $(this).find('input,textarea').val('').end();
+    $('.resto-modal-msg').replaceWith('');
+});
+
+$('#dish-modal').on('hide.bs.modal', function () {
+    $(this).find('input,textarea').val('').end();
+    $('.dish-modal-msg').replaceWith('');
+});
+
+$('#save-resto-btn').click(function(e) {
+    e.preventDefault();
+    var form = $('#resto-form-modal-id'),
+        url = form.attr('action'),
+        method = form.attr('method'),
+        data = form.serialize();
+
+    $.ajax({
+        url: url,
+        method: method,
+        data: data,
+        success: function (response) {
+            $('#search-resto').val(response.name);
+            $('#resto-modal').modal('hide');
+        },
+        error: function(xhr){
+            var errors = xhr.responseJSON;
+            if ($.isEmptyObject(errors) == false) {
+                var alertMessage = '<div class="alert alert-danger alert-dismissible resto-modal-msg">' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><ul>';
+                $.each(errors, function(key, value){
+                    alertMessage += '<li>' + value + '</li>';
+                });
+                alertMessage += '</ul></div>';
+
+                var existingError = $('.resto-modal-msg');
+                if(existingError.length){
+                    existingError.replaceWith(alertMessage);
+                }else{
+                    $('.modal-body').prepend(alertMessage);
+                }
+            }
+        }
+    });
+});
+
+$('#dish-form-modal-id').submit(function (e) {
+    e.preventDefault();
+    var form = $('#dish-form-modal-id'),
+        url = form.attr('action'),
+        method = form.attr('method'),
+        data = form.serialize();
+    $.ajax({
+        url: url,
+        method: method,
+        data: data,
+        success: function (response) {
+            $('#search-dish').val(response.name);
+            $('#dish-modal').modal('hide');
+        },
+        error: function(xhr){
+            var errors = xhr.responseJSON;
+            if ($.isEmptyObject(errors) == false) {
+                var alertMessage = '<div class="alert alert-danger alert-dismissible dish-modal-msg">' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><ul>';
+                $.each(errors, function(key, value){
+                    alertMessage += '<li>' + value + '</li>';
+                });
+                alertMessage += '</ul></div>';
+
+                var existingError = $('.dish-modal-msg');
+                if(existingError.length){
+                    existingError.replaceWith(alertMessage);
+                }else{
+                    $('.modal-body').prepend(alertMessage);
                 }
             }
         }

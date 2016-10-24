@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cuisine;
 use App\Dish;
 use App\Repositories\Contracts\DishesContract;
 use Illuminate\Http\Request;
@@ -12,6 +13,9 @@ class DishesController extends Controller
 {
     protected $dishesRepo;
 
+    private $rules = [
+        'name' => ['required']
+    ];
     /**
      * DishesController constructor.
      * @param $dishesRepo
@@ -51,7 +55,17 @@ class DishesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, $this->rules, array(
+            'name.required' => trans('messages.searchdish_required')
+        ));
 
+        $cuisine = null;
+        $cuisine = Cuisine::firstOrCreate(['name' => $request->cuisine]);
+
+        $dish = Dish::firstOrCreate(['name' => $request->name, 'cuisine_id' => $cuisine->id]);
+        $dish->enabled = true;
+        $cuisine->dishes()->save($dish);
+        return $dish;
     }
 
     /**

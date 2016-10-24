@@ -21,7 +21,7 @@ Route::get('/search', 'HomeController@search')->name('home.search');
 
 Route::post('/persist', 'HomeController@persist')->name('home.persist');
 
-Route::post('/', 'RatingsController@store')->name('ratings.store');
+Route::post('/ratings', 'RatingsController@store')->name('ratings.store');
 
 Route::get('/about', function(){
     return view('pages.about');
@@ -35,9 +35,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
 
     Route::get('/', 'PagesController@dashboard')->name('admin');
 
-    Route::resource('dishes', 'DishesController');
+    //Route::resource('dishes', 'DishesController');
 
-    Route::resource('restos', 'RestosController');
+    //Route::resource('restos', 'RestosController');
 
     Route::resource('cuisines', 'CuisinesController');
 
@@ -51,3 +51,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
 });
 
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');
+Route::post('/', 'RestosController@store')->name('restos.store');
+Route::post('/dishes', 'DishesController@store')->name('dishes.store');

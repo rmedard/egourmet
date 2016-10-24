@@ -16,7 +16,7 @@ class RestosRepository implements RestosContract
 
     public function all()
     {
-        return Resto::with('address')->get();
+        return Resto::with('address')->paginate(20);
     }
 
     public function create(array $resto_data)
