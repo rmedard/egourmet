@@ -1,7 +1,7 @@
 /**
  * Created by Mrebero on 21/07/2016.
  */
-
+/*
 $('a[href^="#"]').click(function(){
     var the_id = $(this).attr("href");
 
@@ -10,6 +10,7 @@ $('a[href^="#"]').click(function(){
     }, 'slow');
     return false;
 });
+*/
 
 if($('#dishes-list-main').children().length != 0){
     var hauteur = $('#upper-header').height();
