@@ -94,7 +94,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                        <button class="btn btn-unique btn-rounded" id="save-dish-btn" type="submit">{{trans('gui.save')}}</button>
+                        <button class="btn btn-unique btn-rounded" id="save-dish-btn" type="submit" disabled>{{trans('gui.save')}}</button>
                         <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">{{trans('gui.cancel')}}</button>
                 </div>
                     {!! Form::close() !!}
