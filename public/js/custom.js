@@ -184,7 +184,6 @@ $('#resto-form-modal-id').submit(function(e) {
                     alertMessage += '<li>' + value + '</li>';
                 });
                 alertMessage += '</ul></div>';
-
                 var existingError = $('.resto-modal-msg');
                 if(existingError.length){
                     existingError.replaceWith(alertMessage);
@@ -207,14 +206,12 @@ $('#dish-form-modal-id').submit(function (e) {
         method: method,
         data: data,
         success: function (response) {
-            console.log(response);
             $('#search-dish').val(response[0].value);
             $('#selected-dish').val(response[0].id);
             $('#dish-modal').modal('hide');
         },
         error: function(xhr){
             var errors = xhr.responseJSON;
-            console.log(errors);
             if ($.isEmptyObject(errors) == false) {
                 var alertMessage = '<div class="alert alert-danger alert-dismissible dish-modal-msg">' +
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><ul>';
@@ -222,7 +219,6 @@ $('#dish-form-modal-id').submit(function (e) {
                     alertMessage += '<li>' + value + '</li>';
                 });
                 alertMessage += '</ul></div>';
-
                 var existingError = $('.dish-modal-msg');
                 if(existingError.length){
                     existingError.replaceWith(alertMessage);
@@ -233,7 +229,7 @@ $('#dish-form-modal-id').submit(function (e) {
         }
     });
 });
-
+/*
 $('.fileinput').on('change.bs.fileinput', function (e) {
     console.log('ndayifasheeeee');
 });
@@ -241,3 +237,4 @@ $('.fileinput').on('change.bs.fileinput', function (e) {
 $('.fileinput').on('clear.bs.fileinput', function (e) {
     console.log('ndayisibye...');
 });
+*/
