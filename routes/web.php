@@ -35,9 +35,9 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
 
     Route::get('/', 'PagesController@dashboard')->name('admin');
 
-    //Route::resource('dishes', 'DishesController');
+    Route::resource('dishes', 'DishesController');
 
-    //Route::resource('restos', 'RestosController');
+    Route::resource('restos', 'RestosController');
 
     Route::resource('cuisines', 'CuisinesController');
 
@@ -51,5 +51,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
 });
 
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');
-Route::post('/restos', 'RestosController@store')->name('restos.store');
-Route::post('/dishes', 'DishesController@store')->name('dishes.store');
+Route::post('/resto_post', 'RestosController@store')->name('any.restos.store');
+Route::post('/dish_post', 'DishesController@store')->name('any.dishes.store');

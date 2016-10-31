@@ -65,7 +65,8 @@ class DishesController extends Controller
         $dish = Dish::firstOrCreate(['name' => $request->name, 'cuisine_id' => $cuisine->id]);
         $dish->enabled = true;
         $cuisine->dishes()->save($dish);
-        return $dish;
+        $results[] = ['id'=>$dish->id,'value'=>$dish->name];
+        return $results;
     }
 
     /**

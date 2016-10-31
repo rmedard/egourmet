@@ -1,30 +1,30 @@
 
 <div class="md-form">
-    <input type="text" id="resto-form-name" class="form-control validate" name="name">
+    {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'resto-form-name'])}}
     <label for="resto-form-name" class="">{{trans('gui.model.name')}}</label>
 </div>
 <div class="row">
     <div class="col-md-8">
         <div class="md-form">
-            <input type="text" id="resto-form-rue" class="form-control validate" name="rue">
+            {{Form::text('rue', null, ['class' => 'form-control validate', 'id' => 'resto-form-rue'])}}
             <label for="resto-form-rue" class="">{{trans('gui.street')}}</label>
         </div>
     </div>
     <div class="col-md-4">
         <div class="md-form">
-            <input type="text" id="resto-form-numero" class="form-control validate" name="numero">
+            {{Form::text('numero', null, ['class' => 'form-control validate', 'id' => 'resto-form-numero'])}}
             <label for="resto-form-numero" class="">{{trans('gui.number')}}</label>
         </div>
     </div>
     <div class="col-md-8">
         <div class="md-form">
-            <input type="text" id="resto-form-commune" class="form-control validate" name="commune">
+            {{Form::text('commune', null, ['class' => 'form-control validate', 'id' => 'resto-form-commune'])}}
             <label for="resto-form-commune" class="">{{trans('gui.commune')}}</label>
         </div>
     </div>
     <div class="col-md-4">
         <div class="md-form">
-            <input type="text" id="resto-form-zip" class="form-control validate" name="zip">
+            {{Form::text('zip', null, ['class' => 'form-control validate', 'id' => 'resto-form-zip'])}}
             <label for="resto-form-zip" class="">{{trans('gui.zip')}}</label>
         </div>
     </div>
@@ -32,15 +32,15 @@
 <div class="row">
     <div class="col-md-8">
         <div class="md-form">
-            <input type="text" id="resto-form-tel" class="form-control validate" name="tel">
+            {{Form::text('tel', null, ['class' => 'form-control validate', 'id' => 'resto-form-tel'])}}
             <label for="resto-form-tel" class="">{{trans('gui.tel')}}</label>
         </div>
         <div class="md-form">
-            <input type="text" id="resto-form-website" class="form-control validate" name="website">
+            {{Form::text('website', null, ['class' => 'form-control validate', 'id' => 'resto-form-website'])}}
             <label for="resto-form-website" class="">{{trans('gui.website')}}</label>
         </div>
         <div class="md-form">
-            <input type="text" id="resto-form-facebook" class="form-control validate" name="facebook">
+            {{Form::text('facebook', null, ['class' => 'form-control validate', 'id' => 'resto-form-facebook'])}}
             <label for="resto-form-facebook" class="">{{trans('gui.facebook')}}</label>
         </div>
     </div>

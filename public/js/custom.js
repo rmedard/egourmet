@@ -1,6 +1,15 @@
 /**
  * Created by Mrebero on 21/07/2016.
  */
+$.ajaxPrefilter(function(options, originalOptions, jqXHR) {
+    var token;
+    if (!options.crossDomain) {
+        token = $('input[name="_token"]').attr('value');
+        if (token) {
+            return jqXHR.setRequestHeader('X-CSRF-Token', token);
+        }
+    }
+});
 
 if($('#dishes-list-main').children().length != 0){
     var hauteur = $('#upper-header').height();
@@ -147,19 +156,24 @@ $('#dish-modal').on('hide.bs.modal', function () {
     $('.dish-modal-msg').replaceWith('');
 });
 
-$('#save-resto-btn').click(function(e) {
+$('#resto-form-modal-id').submit(function(e) {
     e.preventDefault();
-    var form = $('#resto-form-modal-id'),
+    var form = $(this),
         url = form.attr('action'),
         method = form.attr('method'),
-        data = form.serialize();
-
+        formData = new FormData($(this)[0]);
+    //console.log(formData.getAll('mainphoto'));
     $.ajax({
         url: url,
         method: method,
-        data: data,
+        data: formData,
+        //Because of the file upload, these two are needed
+        contentType: false,
+        processData: false,
         success: function (response) {
-            $('#search-resto').val(response.name);
+            console.log(response);
+            $('#search-resto').val(response[0].value);
+            $('#selected-resto').val(response[0].id);
             $('#resto-modal').modal('hide');
         },
         error: function(xhr){
@@ -194,11 +208,14 @@ $('#dish-form-modal-id').submit(function (e) {
         method: method,
         data: data,
         success: function (response) {
-            $('#search-dish').val(response.name);
+            console.log(response);
+            $('#search-dish').val(response[0].value);
+            $('#selected-dish').val(response[0].id);
             $('#dish-modal').modal('hide');
         },
         error: function(xhr){
             var errors = xhr.responseJSON;
+            console.log(errors);
             if ($.isEmptyObject(errors) == false) {
                 var alertMessage = '<div class="alert alert-danger alert-dismissible dish-modal-msg">' +
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><ul>';
@@ -216,4 +233,12 @@ $('#dish-form-modal-id').submit(function (e) {
             }
         }
     });
+});
+
+$('.fileinput').on('change.bs.fileinput', function (e) {
+    console.log('ndayifasheeeee');
+});
+
+$('.fileinput').on('clear.bs.fileinput', function (e) {
+    console.log('ndayisibye...');
 });

@@ -9,6 +9,4 @@
 return [
     'noresto' => '/uploads/images/restos/noresto.png',
     'nodish' => '/uploads/images/plats/nodish.png',
-    's3_resto_img_dir' => '/local/restos',
-    's3_dishes_img_dir' => '/local/dishes'
 ];

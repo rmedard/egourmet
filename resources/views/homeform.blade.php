@@ -61,16 +61,15 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">{{trans('gui.create_resto')}}</h4>
                 </div>
-                <form action="{{route('restos.store')}}" accept-charset="UTF-8" id="resto-form-modal-id" enctype="multipart/form-data" method="post">
-                    {{csrf_field()}}
+                {!! Form::open(['route' => 'any.restos.store', 'method' => 'POST', 'id' => 'resto-form-modal-id', 'files' => TRUE, 'multipart' => TRUE]) !!}
                     <div class="modal-body">
                         @include('admin.data.restos.form')
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-unique btn-rounded" id="save-resto-btn" disabled>{{trans('gui.save')}}</button>
+                        <button class="btn btn-unique btn-rounded" id="save-resto-btn">{{trans('gui.save')}}</button>
                         <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">{{trans('gui.cancel')}}</button>
                     </div>
-                </form>
+                {!! Form::close() !!}
 
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -82,7 +81,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">{{trans('gui.create_dish')}}</h4>
                 </div>
-                    {!! Form::open(['route' => 'dishes.store', 'method' => 'POST', 'id' => 'dish-form-modal-id']) !!}
+                    {!! Form::open(['route' => 'any.dishes.store', 'method' => 'POST', 'id' => 'dish-form-modal-id']) !!}
                 <div class="modal-body">
                     <div class="md-form">
                         <label for="dish-name-id">{{trans('gui.model.name')}}</label>
@@ -94,7 +93,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                        <button class="btn btn-unique btn-rounded" id="save-dish-btn" type="submit" disabled>{{trans('gui.save')}}</button>
+                        <button class="btn btn-unique btn-rounded" id="save-dish-btn" type="submit">{{trans('gui.save')}}</button>
                         <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">{{trans('gui.cancel')}}</button>
                 </div>
                     {!! Form::close() !!}

@@ -55,7 +55,7 @@ return [
         ],
 
         'app_public' => [
-            'driver' => 'local',
+            'driver' => env('APP_ENV'),
             'root' => public_path(),
             'visibility' => 'public',
         ],
@@ -66,6 +66,7 @@ return [
             'secret' => env('S3_SECRET'),
             'region' => env('S3_REGION'),
             'bucket' => env('S3_BUCKET'),
+            'folder' => env('S3_FOLDER'),
         ],
 
     ],

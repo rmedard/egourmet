@@ -19,7 +19,6 @@ class RestosController extends Controller
     protected $restosRepo;
     protected $addressesRepo;
     private $upload_dir;
-    private $max_image_size;
 
     private $rules = [
         'name' => ['required', 'unique:restos,name'],
@@ -38,7 +37,7 @@ class RestosController extends Controller
     {
         $this->restosRepo = $restosRepo;
         $this->addressesRepo = $addressesRepo;
-        $this->upload_dir = config('constants.s3_resto_img_dir');
+        $this->upload_dir = config('filesystems.disks.s3.folder').'/restos';
     }
 
 
@@ -79,25 +78,37 @@ class RestosController extends Controller
             'commune.required' => trans('messages.restocommune_required'),
             'zip.required' => trans('messages.restozip_required')
         ));
-        $data = $this->getRequest($request);
-
-        $address = new Address();
-        $address->rue = $data->get('rue');
-        $address->numero = $data->get('numero');
-        $address->codepostal = $data->get('zip');
-        $address->commune = $data->get('commune');
-        $address->save();
 
         //Use this to get the map view
         //$address_str = $data->get('rue').'+'.$data->get('numero').',+'.$data->get('zip').'+'.$data->get('commune');
         $resto = new Resto();
-        $resto->name = $data->get('name');
-        $resto->mainphoto = $data->get('mainphoto');
-        $resto->tel = $data->get('tel');
-        $resto->website = $data->get('website');
-        $resto->facebook = $data->get('facebook');
-        $resto->save();
-        $resto->address()->associate($address)->save();
+        $resto->name = $request['name'];
+        $resto->mainphoto = $request['mainphoto'];
+        $resto->tel = $request['tel'];
+        $resto->website = $request['website'];
+        $resto->facebook = $request['facebook'];
+
+        if($request->hasFile('mainphoto')){
+            $photoFile = $request->file('mainphoto');
+            $filename = 'resto_' . time() . '.png';
+            Image::make($photoFile)->fit(200, 200, function ($constraint) {
+                $constraint->upsize();
+            })->save('temp/'.$filename);
+            $s3 = Storage::disk('s3');
+            $path = $s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
+            $resto->mainphoto = $path;
+            Storage::disk('app_public')->delete('temp/' . $filename);
+        }
+
+        $address = new Address();
+        $address->rue = $request['rue'];
+        $address->numero = $request['numero'];
+        $address->codepostal = $request['zip'];
+        $address->commune = $request['commune'];
+        $address = Address::create($address->toArray());
+        $address->resto()->save($resto);
+        $results[] = ['id'=>$resto->id,'value'=>$resto->name];
+        return $results;
     }
 
     /**
@@ -143,24 +154,5 @@ class RestosController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /*
-     * Clean up the photo field
-     */
-    private function getRequest(Request $req){
-        $data = $req->all();
-        if($req->hasFile('mainphoto')){
-            $photoFile = $req->file('mainphoto');
-            $filename = 'resto_' . time() . '.' . $photoFile->getClientOriginalExtension();
-            Image::make($photoFile)->fit(200, 200, function ($constraint) {
-                $constraint->upsize();
-            })->save('temp/'. $filename);
-            $s3 = Storage::disk('s3');
-            $path = $s3->putFileAs($this->upload_dir, new File('temp/' . $filename), $filename, 'public');
-            $data['mainphoto'] = $path;
-            //Storage::disk('app_public')->delete('temp/' . $filename);
-        }
-        return collect($data);
     }
 }

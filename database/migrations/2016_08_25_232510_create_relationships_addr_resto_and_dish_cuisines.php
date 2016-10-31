@@ -14,7 +14,7 @@ class CreateRelationshipsAddrRestoAndDishCuisines extends Migration
     public function up()
     {
         Schema::table('restos', function (Blueprint $table) {
-            $table->foreign('address_id')->references('id')->on('addresses');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('cascade');
         });
 
         Schema::table('dishes', function (Blueprint $table) {
