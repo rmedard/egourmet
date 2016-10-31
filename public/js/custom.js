@@ -171,7 +171,6 @@ $('#resto-form-modal-id').submit(function(e) {
         contentType: false,
         processData: false,
         success: function (response) {
-            console.log(response);
             $('#search-resto').val(response[0].value);
             $('#selected-resto').val(response[0].id);
             $('#resto-modal').modal('hide');
