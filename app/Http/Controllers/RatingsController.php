@@ -42,7 +42,7 @@ class RatingsController extends Controller
         $rating->email = $request->ratingemail;
         $rating->comment = $request->ratingcomment;
         $rating->save();
-        session()->flash('flash_message', trans('messages.declaration_success'));
+        session()->flash('flash_message', trans('messages.evaluation_success'));
         return view('homeform');
     }
 }

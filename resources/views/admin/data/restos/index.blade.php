@@ -48,9 +48,9 @@
                         <td>{{$resto->enabled ? trans('gui.yes') : trans('gui.no')}}</td>
                         <td>
                             <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <button class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="{{trans('gui.edit')}}">
+                                <a href="{{route('restos.edit', ['id' => $resto->id])}}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="{{trans('gui.edit')}}">
                                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </button>
+                                </a>
                                 <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="{{trans('gui.delete')}}">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </button>

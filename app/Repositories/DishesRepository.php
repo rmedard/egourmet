@@ -17,7 +17,7 @@ class DishesRepository implements DishesContract
 
     public function all()
     {
-        return Dish::with('cuisine')->paginate(20);
+        return Dish::with('cuisine')->orderBy('created_at', 'desc')->paginate(20);
     }
 
     public function create(array $dish_data)

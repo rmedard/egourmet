@@ -19,6 +19,7 @@ class RestosController extends Controller
     protected $restosRepo;
     protected $addressesRepo;
     private $upload_dir;
+    private $s3;
 
     private $rules = [
         'name' => ['required', 'unique:restos,name'],
@@ -38,6 +39,7 @@ class RestosController extends Controller
         $this->restosRepo = $restosRepo;
         $this->addressesRepo = $addressesRepo;
         $this->upload_dir = config('filesystems.disks.s3.folder').'/restos';
+        $this->s3 = Storage::disk('s3');
     }
 
 
@@ -87,17 +89,10 @@ class RestosController extends Controller
         $resto->tel = $request['tel'];
         $resto->website = $request['website'];
         $resto->facebook = $request['facebook'];
+        $resto->enabled = isset($request['enabled']);
 
         if($request->hasFile('mainphoto')){
-            $photoFile = $request->file('mainphoto');
-            $filename = 'resto_' . time() . '.png';
-            Image::make($photoFile)->fit(200, 200, function ($constraint) {
-                $constraint->upsize();
-            })->save('temp/'.$filename);
-            $s3 = Storage::disk('s3');
-            $path = $s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
-            $resto->mainphoto = $path;
-            Storage::disk('app_public')->delete('temp/' . $filename);
+            $resto->mainphoto = $this->processImage($request);
         }
 
         $address = new Address();
@@ -108,7 +103,13 @@ class RestosController extends Controller
         $address = Address::create($address->toArray());
         $address->resto()->save($resto);
         $results[] = ['id'=>$resto->id,'value'=>$resto->name];
-        return $results;
+        if($request->ajax()){
+            return $results;
+        }else{
+            $restos = $this->restosRepo->all();
+            session()->flash('flash_message', trans('messages.resto_creat_success'));
+            return view('admin.data.restos.index', compact('restos'));
+        }
     }
 
     /**
@@ -130,7 +131,13 @@ class RestosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $resto = array_dot($this->restosRepo->find($id)->toArray());
+        if(isset($resto['mainphoto']) and $this->s3->exists($resto['mainphoto'])){
+            $resto['mainphoto'] = $this->s3->url($resto['mainphoto']);
+        }else{
+            $resto['mainphoto'] = config('constants.noresto');
+        }
+        return view('admin.data.restos.edit', compact('resto'));
     }
 
     /**
@@ -142,7 +149,18 @@ class RestosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
+        $this->validate($request, $this->rules, array(
+            'name.required' => trans('messages.restoname_required'),
+            'name.unique' => trans('messages.restoname_unique'),
+            'rue.required' => trans('messages.restorue_required'),
+            'numero.required' => trans('messages.restonumero_exists'),
+            'commune.required' => trans('messages.restocommune_required'),
+            'zip.required' => trans('messages.restozip_required')
+        ));
+        $resto = $this->restosRepo->find($id);
+        $address = $resto->address;
+
     }
 
     /**
@@ -154,5 +172,18 @@ class RestosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    private function processImage(Request $request){
+        $photoFile = $request->file('mainphoto');
+        $filename = 'resto_' . time() . '.png';
+        Image::make($photoFile)->fit(200, 200, function ($constraint) {
+            $constraint->upsize();
+        })->save('temp/'.$filename);
+        //$s3 = Storage::disk('s3');
+        $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
+        //$resto->mainphoto = $path;
+        Storage::disk('app_public')->delete('temp/' . $filename);
+        return $path;
     }
 }

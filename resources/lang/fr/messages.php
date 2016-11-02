@@ -23,5 +23,6 @@ return [
     'restozip_required' => 'Il faut préciser le code postal',
 
     /*Success messages*/
-    'declaration_success' => 'Merci, votre déclaration est enregistée!'
+    'evaluation_success' => 'Merci pour votre évaluation! Nous reprendrons contact avec vous si vous faites partie des heureux gagnants du Bongo',
+    'resto_creat_success' => 'Merci, le nouveau restaurant est enregisté!',
 ];

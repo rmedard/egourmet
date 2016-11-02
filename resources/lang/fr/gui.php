@@ -18,6 +18,8 @@ return [
     'create_resto' => 'Créer un restaurant',
     'create_dish' => 'Créer un plat',
     'donnez_evaluation' => 'Donnez-nous votre évaluation',
+    'your_email' => 'Votre email',
+    'your_comment' => 'Votre commentaire (facultatif)',
 
     /*Addresse*/
     'street' => 'Rue',
@@ -41,7 +43,8 @@ return [
     'model.updated_at' => 'Date de modification',
 
     /*Model operations*/
-    'add.resto' => 'Ajouter un resaurant',
+    'add.resto' => 'Ajouter un restaurant',
+    'edit.resto' => 'Modifier un restaurant',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
 
@@ -61,6 +64,7 @@ return [
     'edit' => 'Modifier',
     'choose_photo' => 'Ajouter une photo',
     'changer' => 'Changer',
-    'remove' => 'Enlever'
+    'remove' => 'Enlever',
+    'send' => 'Envoyer'
 
 ];

@@ -9,6 +9,8 @@
 namespace App\Repositories\Contracts;
 
 
+use Illuminate\Http\Request;
+
 interface RestosContract
 {
     public function all();
@@ -17,7 +19,7 @@ interface RestosContract
 
     public function find($resto_id);
 
-    public function update($resto_id, array $resto_data);
+    public function update(Request $request, $resto_id);
 
     public function delete($resto_id);
 }

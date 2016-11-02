@@ -23,6 +23,9 @@
     <!-- Mdbootstrap CSS -->
     <link href="/assets/mdb/css/mdb.min.css" rel="stylesheet" type="text/css">
 
+    <!-- Jasny CSS -->
+    <link href="/assets/jasny/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css">
+
     <!-- Custom -->
     <link href="/css/app_admin.css" rel="stylesheet" type="text/css">
 
@@ -170,7 +173,11 @@
     </nav>
 
     <div id="page-wrapper">
-
+        @if(session('flash_message'))
+            <div class="alert alert-success">
+                {{ session('flash_message') }}
+            </div>
+        @endif
         @yield('content')
 
     </div>
@@ -192,6 +199,9 @@
 
 <!-- MDB -->
 <script src="/assets/mdb/js/mdb.min.js"></script>
+
+<!-- Jasny JS -->
+<script src="/assets/jasny/js/jasny-bootstrap.min.js" type="application/javascript"></script>
 
 <script src="/assets/metisMenu/metisMenu.min.js"></script>
 

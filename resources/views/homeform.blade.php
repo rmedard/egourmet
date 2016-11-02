@@ -24,12 +24,12 @@
                     <input type="text" id="search-dish" class="form-control validate" name="searchdish" placeholder="Chercher un plat..." value="{{old('searchdish')}}">
                     <input type="hidden" id="selected-dish" name="selecteddish">
                 </div>
-                <div style="text-align: right"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
+                <div style="text-align: right; display: none"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
                 <div class="md-form form-group" id="search-resto-group" style="width: 100%">
                     <input type="text" id="search-resto" class="form-control validate" name="searchresto" placeholder="Chercher un restaurant..." value="{{old('searchresto')}}">
                     <input type="hidden" id="selected-resto" name="selectedresto">
                 </div>
-                <div style="text-align: right"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
+                <div style="text-align: right; display: none"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
                 <div class="md-form rate-input" style="font-size: 30px">
                     <label style="vertical-align: middle" for="temp-rating">Evaluez</label>
                     <input type="hidden" class="rating" value="{{old('rating-value')}}" data-fractions="2" name="ratingvalue" id="temp-rating"/>
@@ -37,18 +37,18 @@
 
                 <div class="md-form">
                     <div class="row">
-                        <div class="col-md-6">
-                            <input type="text" id="temp-email" class="form-control validate" placeholder="Votre email" name="ratingemail" value="{{old('ratingemail')}}">
+                        <div class="col-md-12">
+                            <input type="text" id="temp-email" class="form-control validate" placeholder="{{trans('gui.your_email')}}" name="ratingemail" value="{{old('ratingemail')}}">
                         </div>
-                        <div class="col-md-6">
-                            <textarea type="text" class="md-textarea rating-comment-input validate" name="ratingcomment" placeholder="Votre avis">{{old('ratingcomment')}}</textarea>
+                        <div class="col-md-12">
+                            <textarea type="text" class="md-textarea rating-comment-input validate" name="ratingcomment" placeholder="{{trans('gui.your_comment')}}">{{old('ratingcomment')}}</textarea>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="text-xs-center">
-                    <button class="btn btn-indigo" type="submit">Sauvegarder</button>
+                    <button class="btn btn-indigo" type="submit">{{trans('gui.send')}}</button>
                 </div>
                 {!! Form::close() !!}
             </div>
@@ -64,7 +64,12 @@
                 {!! Form::open(['route' => 'any.restos.store', 'method' => 'POST', 'id' => 'resto-form-modal-id', 'files' => TRUE, 'multipart' => TRUE]) !!}
                     <div class="modal-body">
                         @include('admin.data.restos.form')
+                        <fieldset class="form-group" hidden>
+                            <input type="checkbox" class="filled-in" id="resto-form-enabled" name="enabled" checked>
+                            <label for="resto-form-enabled">{{trans('gui.model.enabled')}}</label>
+                        </fieldset>
                     </div>
+
                     <div class="modal-footer">
                         <button class="btn btn-unique btn-rounded" id="save-resto-btn">{{trans('gui.save')}}</button>
                         <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">{{trans('gui.cancel')}}</button>

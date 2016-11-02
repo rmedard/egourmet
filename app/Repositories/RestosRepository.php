@@ -10,13 +10,14 @@ namespace App\Repositories;
 
 use App\Resto;
 use App\Repositories\Contracts\RestosContract;
+use Illuminate\Http\Request;
 
 class RestosRepository implements RestosContract
 {
 
     public function all()
     {
-        return Resto::with('address')->paginate(20);
+        return Resto::with('address')->orderBy('created_at', 'desc')->paginate(20);
     }
 
     public function create(array $resto_data)
@@ -26,12 +27,14 @@ class RestosRepository implements RestosContract
 
     public function find($resto_id)
     {
-        return Resto::findOrFail($resto_id);
+        return Resto::with('address')->findOrFail($resto_id);
     }
 
-    public function update($resto_id, array $resto_data)
+    public function update(Request $request, $resto_id)
     {
-        Resto::find($resto_id)->update($resto_data);
+        //$resto = Resto::with('address')->find($resto_id);
+
+        Resto::with('address')->find($resto_id)->update($request);
     }
 
     public function delete($resto_id)

@@ -229,12 +229,3 @@ $('#dish-form-modal-id').submit(function (e) {
         }
     });
 });
-/*
-$('.fileinput').on('change.bs.fileinput', function (e) {
-    console.log('ndayifasheeeee');
-});
-
-$('.fileinput').on('clear.bs.fileinput', function (e) {
-    console.log('ndayisibye...');
-});
-*/
