@@ -25,4 +25,5 @@ return [
     /*Success messages*/
     'evaluation_success' => 'Merci pour votre évaluation! Nous reprendrons contact avec vous si vous faites partie des heureux gagnants du Bongo',
     'resto_creat_success' => 'Merci, le nouveau restaurant est enregisté!',
+    'resto_update_success' => 'Merci, le restaurant est mis à jour!',
 ];

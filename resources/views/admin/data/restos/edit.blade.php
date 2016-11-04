@@ -18,7 +18,7 @@
                     </ul>
                 </div>
             @endif
-            {!! Form::open($resto, ['route' => ['any.restos.update', $resto['id']],'files' => true, 'method' => 'PATCH']) !!}
+            {!! Form::model($resto, ['route' => ['restos.update', $resto['id']],'files' => true, 'method' => 'PATCH']) !!}
 
                 @include('admin.data.restos.form')
             <fieldset class="form-group">

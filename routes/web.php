@@ -39,8 +39,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
 
     Route::resource('restos', 'RestosController');
 
-    Route::patch('/restos/{id}', 'RestosController@update')->name('any.restos.update');
-
     Route::resource('cuisines', 'CuisinesController');
 
     Route::get('messages', 'MessagesController@index')->name('messages.index');

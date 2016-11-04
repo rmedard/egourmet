@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 
 class RestosController extends Controller
@@ -22,7 +23,6 @@ class RestosController extends Controller
     private $s3;
 
     private $rules = [
-        'name' => ['required', 'unique:restos,name'],
         'rue' => ['required'],
         'numero' => ['required'],
         'commune' => ['required'],
@@ -72,6 +72,7 @@ class RestosController extends Controller
      */
     public function store(Request $request)
     {
+        $this->rules['name'] = ['required', Rule::unique('restos', 'name')];
         $this->validate($request, $this->rules, array(
             'name.required' => trans('messages.restoname_required'),
             'name.unique' => trans('messages.restoname_unique'),
@@ -131,11 +132,11 @@ class RestosController extends Controller
      */
     public function edit($id)
     {
-        $resto = array_dot($this->restosRepo->find($id)->toArray());
-        if(isset($resto['mainphoto']) and $this->s3->exists($resto['mainphoto'])){
-            $resto['mainphoto'] = $this->s3->url($resto['mainphoto']);
+        $resto = $this->restosRepo->find($id);
+        if(isset($resto->mainphoto) and $this->s3->exists($resto->mainphoto)){
+            $resto->mainphoto = $this->s3->url($resto->mainphoto);
         }else{
-            $resto['mainphoto'] = config('constants.noresto');
+            $resto->mainphoto = config('constants.noresto');
         }
         return view('admin.data.restos.edit', compact('resto'));
     }
@@ -149,7 +150,7 @@ class RestosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        $this->rules['name'] = ['required', Rule::unique('restos', 'name')->ignore($id)];
         $this->validate($request, $this->rules, array(
             'name.required' => trans('messages.restoname_required'),
             'name.unique' => trans('messages.restoname_unique'),
@@ -159,8 +160,28 @@ class RestosController extends Controller
             'zip.required' => trans('messages.restozip_required')
         ));
         $resto = $this->restosRepo->find($id);
-        $address = $resto->address;
+        $restoData = [
+            'name' => $request->name,
+            'tel' => $request->tel,
+            'website' => $request->website,
+            'facebook' => $request->facebook,
+            'enabled' => isset($request->enabled)
+        ];
+        if($request->hasFile('mainphoto')){
+            $restoData['mainphoto'] = $this->processImage($request);
+        }
+        $addressData = [
+            'rue' => $request->rue,
+            'numero' => $request->numero,
+            'codepostal' => $request->zip,
+            'commune' => $request->commune
+        ];
+        $resto->update($restoData);
+        $resto->address->update($addressData);
 
+        $restos = $this->restosRepo->all();
+        session()->flash('flash_message', trans('messages.resto_update_success'));
+        return redirect('admin/restos')->with('restos', $restos);
     }
 
     /**
@@ -180,9 +201,7 @@ class RestosController extends Controller
         Image::make($photoFile)->fit(200, 200, function ($constraint) {
             $constraint->upsize();
         })->save('temp/'.$filename);
-        //$s3 = Storage::disk('s3');
         $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
-        //$resto->mainphoto = $path;
         Storage::disk('app_public')->delete('temp/' . $filename);
         return $path;
     }
