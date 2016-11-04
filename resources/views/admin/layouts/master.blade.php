@@ -59,7 +59,7 @@
 
         <ul class="nav navbar-top-links navbar-right">
             <span style="color: #337ab7">{{trans('gui.welcome')}} {{Auth::check() ? Auth::user()->name : 'unknown'}}</span>
-            <li class="dropdown">
+            <li class="dropdown" style="display: none">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                     <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
