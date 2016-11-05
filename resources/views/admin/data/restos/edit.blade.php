@@ -19,16 +19,15 @@
                 </div>
             @endif
             {!! Form::model($resto, ['route' => ['restos.update', $resto['id']],'files' => true, 'method' => 'PATCH']) !!}
-
                 @include('admin.data.restos.form')
-            <fieldset class="form-group">
-                <input type="checkbox" class="filled-in" id="resto-form-enabled" name="enabled" checked>
-                <label for="resto-form-enabled">{{trans('gui.model.enabled')}}</label>
-            </fieldset>
-            <div>
-                <button class="btn btn-unique btn-rounded" type="submit">{{trans('gui.save')}}</button>
-                <a class="btn btn-danger btn-rounded" href="{{route('restos.index')}}">{{trans('gui.cancel')}}</a>
-            </div>
+                <fieldset class="form-group">
+                    <input type="checkbox" class="filled-in" id="resto-form-enabled" name="enabled" checked>
+                    <label for="resto-form-enabled">{{trans('gui.model.enabled')}}</label>
+                </fieldset>
+                <div>
+                    <button class="btn btn-unique btn-rounded" type="submit">{{trans('gui.save')}}</button>
+                    <a class="btn btn-danger btn-rounded" href="{{route('restos.index')}}">{{trans('gui.cancel')}}</a>
+                </div>
             {!! Form::close() !!}
         </div>
     </div>

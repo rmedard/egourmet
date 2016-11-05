@@ -133,7 +133,9 @@ class RestosController extends Controller
     public function edit($id)
     {
         $resto = $this->restosRepo->find($id);
+        $old_photo = null;
         if(isset($resto->mainphoto) and $this->s3->exists($resto->mainphoto)){
+            session(['old_photo' => $resto->mainphoto]);
             $resto->mainphoto = $this->s3->url($resto->mainphoto);
         }else{
             $resto->mainphoto = config('constants.noresto');
@@ -159,6 +161,10 @@ class RestosController extends Controller
             'commune.required' => trans('messages.restocommune_required'),
             'zip.required' => trans('messages.restozip_required')
         ));
+        if(session()->has('old_photo')){
+            $this->s3->delete(session('old_photo'));
+            session()->forget('old_photo');
+        }
         $resto = $this->restosRepo->find($id);
         $restoData = [
             'name' => $request->name,
