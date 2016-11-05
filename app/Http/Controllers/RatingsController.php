@@ -38,7 +38,7 @@ class RatingsController extends Controller
         $pivotId = $resto->dishes()->find($request->selecteddish)->pivot->id;
         $rating = new Rating();
         $rating->dish_resto_id = $pivotId;
-        $rating->value = $request->ratingvalue;
+        $rating->value = empty($request->ratingvalue) ? 0 : $request->ratingvalue;
         $rating->email = $request->ratingemail;
         $rating->comment = $request->ratingcomment;
         $rating->save();

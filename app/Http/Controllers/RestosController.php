@@ -202,7 +202,7 @@ class RestosController extends Controller
             $constraint->upsize();
         })->save('temp/'.$filename);
         $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
-        Storage::delete('temp/' . $filename);
+        Storage::disk('local')->delete('temp/'.$filename);
         return $path;
     }
 }

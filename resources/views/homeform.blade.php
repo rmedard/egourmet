@@ -32,7 +32,7 @@
                 <div style="text-align: right; display: none"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
                 <div class="md-form rate-input" style="font-size: 30px">
                     <label style="vertical-align: middle" for="temp-rating">Evaluez</label>
-                    <input type="hidden" class="rating" value="{{old('rating-value')}}" data-fractions="2" name="ratingvalue" id="temp-rating"/>
+                    <input type="hidden" class="rating" data-fractions="2" name="ratingvalue" id="temp-rating" value="{{old('ratingvalue')}}"/>
                 </div>
 
                 <div class="md-form">
@@ -114,6 +114,9 @@
         function openDishModal() {
             $('.dish-modal-msg').val('');
             $('#dish-modal').modal('show');
+        }
+        if($('#temp-rating').val() == ''){
+            $('#temp-rating').val(3);
         }
     </script>
 </div>
