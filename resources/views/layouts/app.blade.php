@@ -34,8 +34,8 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-        <script src="assets/jquery/jquery-1.12.4.min.js"></script>
-        <script src="assets/jquery-ui/jquery-ui-1.12.1.min.js"></script>
+        <script src="/assets/jquery/jquery-1.12.4.min.js"></script>
+        <script src="/assets/jquery-ui/jquery-ui-1.12.1.min.js"></script>
 
     </head>
 

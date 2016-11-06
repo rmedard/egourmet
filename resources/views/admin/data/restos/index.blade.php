@@ -10,8 +10,19 @@
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
-        <div class="pull-right">
-            <a class="btn-floating btn-small blue" href="{{route('restos.create')}}"><i class="fa fa-plus"></i></a>
+        <div class="col-md-6">
+            {!! Form::open(['route' => 'search.resto', 'method' => 'POST']) !!}
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Chercher un restaurant..." id="search-resto-admin">
+                <input type="hidden" id="selected-resto-admin" name="selectedresto">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                </span>
+            </div>
+            {!! Form::close() !!}
+        </div>
+        <div class="col-md-6">
+            <a class="btn-floating btn-small blue" href="{{route('restos.create')}}" data-toggle="tooltip" data-placement="top" title="{{trans('gui.add.resto')}}"><i class="fa fa-plus"></i></a>
         </div>
     </div>
     <div class="row">

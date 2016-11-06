@@ -48,6 +48,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
     Route::get('settings', function(){
         return view('admin.pages.settings');
     })->name('settings');
+
+    Route::post('/search_resto_admin', 'SearchController@searchResto')->name('search.resto');
 });
 
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');

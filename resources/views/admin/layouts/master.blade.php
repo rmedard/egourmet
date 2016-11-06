@@ -23,11 +23,18 @@
     <!-- Mdbootstrap CSS -->
     <link href="/assets/mdb/css/mdb.min.css" rel="stylesheet" type="text/css">
 
+    <!-- jquery UI -->
+    <link href="/assets/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
     <!-- Jasny CSS -->
     <link href="/assets/jasny/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css">
 
     <!-- Custom -->
     <link href="/css/app_admin.css" rel="stylesheet" type="text/css">
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+    <script src="/assets/jquery/jquery-1.12.4.min.js"></script>
+    <script src="/assets/jquery-ui/jquery-ui-1.12.1.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -185,9 +192,6 @@
 
 </div>
 <!-- /#wrapper -->
-
-<!-- jQuery -->
-<script src="/assets/jquery/jquery-2.2.4.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="/assets/bootstrap/js/bootstrap.min.js"></script>

@@ -89,7 +89,7 @@ class HomeController extends Controller
         if($request->ajax()){
             $results = array();
             $restoItem = $request->input(['term']);
-            $restos = Resto::where('name','LIKE','%'.$restoItem.'%')->where('enabled', 1)->take(5)->get();
+            $restos = Resto::where('name','LIKE','%'.$restoItem.'%')->where('enabled', 1)->take(10)->get();
             foreach ($restos as $resto) {
                 $results[] = ['id'=>$resto->id,'value'=>$resto->name];
             }

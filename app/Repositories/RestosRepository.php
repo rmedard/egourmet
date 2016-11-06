@@ -32,8 +32,6 @@ class RestosRepository implements RestosContract
 
     public function update(Request $request, $resto_id)
     {
-        //$resto = Resto::with('address')->find($resto_id);
-
         Resto::with('address')->find($resto_id)->update($request);
     }
 
