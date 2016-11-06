@@ -204,8 +204,8 @@ class RestosController extends Controller
     private function processImage(Request $request){
         $photoFile = $request->file('mainphoto');
         $filename = 'resto_' . time() . '.jpg';
-        Image::make($photoFile)->fit(200, 200, function ($constraint) {
-            $constraint->upsize();
+        Image::make($photoFile)->resize(200, null, function ($constraint) {
+            $constraint->aspectRatio();
         })->save('temp/'.$filename);
         $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
         Storage::delete('temp/'.$filename);
