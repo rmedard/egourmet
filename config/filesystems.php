@@ -41,11 +41,13 @@ return [
     |
     */
 
+    /*local disk points to public folder. public points to app.public which is wrong*/
+
     'disks' => [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path(),
         ],
 
         'public' => [
