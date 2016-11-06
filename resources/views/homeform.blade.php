@@ -24,12 +24,12 @@
                     <input type="text" id="search-dish" class="form-control validate" name="searchdish" placeholder="Chercher un plat..." value="{{old('searchdish')}}">
                     <input type="hidden" id="selected-dish" name="selecteddish">
                 </div>
-                <div style="text-align: right; display: none"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
+                <div style="text-align: right;"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
                 <div class="md-form form-group" id="search-resto-group" style="width: 100%">
                     <input type="text" id="search-resto" class="form-control validate" name="searchresto" placeholder="Chercher un restaurant..." value="{{old('searchresto')}}">
                     <input type="hidden" id="selected-resto" name="selectedresto">
                 </div>
-                <div style="text-align: right; display: none"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
+                <div style="text-align: right;"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
                 <div class="md-form rate-input" style="font-size: 30px">
                     <label style="vertical-align: middle" for="temp-rating">Evaluez</label>
                     <input type="hidden" class="rating" data-fractions="2" name="ratingvalue" id="temp-rating" value="{{old('ratingvalue')}}"/>
