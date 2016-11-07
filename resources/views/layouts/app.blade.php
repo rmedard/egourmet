@@ -42,8 +42,7 @@
     <body>
 
         @include('layouts.partials.navbar')
-
-        @yield('content')
+        <div>@yield('content')</div>
         @include('layouts.partials.footer')
     </body>
 </html>
