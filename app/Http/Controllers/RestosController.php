@@ -138,6 +138,7 @@ class RestosController extends Controller
             session(['old_photo' => $resto->mainphoto]);
             $resto->mainphoto = $this->s3->url($resto->mainphoto);
         }else{
+            session()->forget('old_photo');
             $resto->mainphoto = config('constants.noresto');
         }
         return view('admin.data.restos.edit', compact('resto'));
