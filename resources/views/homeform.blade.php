@@ -22,12 +22,12 @@
                 {!! Form::open(['route' => 'ratings.store', 'method' => 'POST','files' => true, 'id' => 'resto-form-id']) !!}
                 <div class="md-form form-group" id="search-dish-group" style="width: 100%">
                     <input type="text" id="search-dish" class="form-control validate" name="searchdish" placeholder="Chercher un plat..." value="{{old('searchdish')}}">
-                    <input type="hidden" id="selected-dish" name="selecteddish">
+                    <input type="hidden" id="selected-dish" name="selecteddish" value="{{old('selecteddish')}}">
                 </div>
                 <div style="text-align: right;"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
                 <div class="md-form form-group" id="search-resto-group" style="width: 100%">
                     <input type="text" id="search-resto" class="form-control validate" name="searchresto" placeholder="Chercher un restaurant..." value="{{old('searchresto')}}">
-                    <input type="hidden" id="selected-resto" name="selectedresto">
+                    <input type="hidden" id="selected-resto" name="selectedresto" value="{{old('selectedresto')}}">
                 </div>
                 <div style="text-align: right;"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
                 <div class="md-form rate-input" style="font-size: 30px">
