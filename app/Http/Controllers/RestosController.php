@@ -166,6 +166,8 @@ class RestosController extends Controller
             $this->s3->delete(session('old_photo'));
             session()->forget('old_photo');
         }
+        
+        //Do all this is repo update
         $resto = $this->restosRepo->find($id);
         $restoData = [
             'name' => $request->name,
@@ -185,7 +187,8 @@ class RestosController extends Controller
         ];
         $resto->update($restoData);
         $resto->address->update($addressData);
-
+        //Until here
+        
         $restos = $this->restosRepo->all();
         session()->flash('flash_message', trans('messages.resto_update_success'));
         return redirect('admin/restos')->with('restos', $restos);
