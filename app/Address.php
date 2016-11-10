@@ -11,4 +11,8 @@ class address extends Model
     public function resto(){
         return $this->hasOne(Resto::class);
     }
+
+    public function display(){
+        return $this->rue.' '.$this->numero.', '.$this->codepostal.' '.$this->commune;
+    }
 }

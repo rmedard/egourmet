@@ -4,9 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">Paramètres</h1>
-        </div>
+            <h1 class="display-4">Paramètres</h1>
         <!-- /.col-lg-12 -->
     </div>
 @endsection

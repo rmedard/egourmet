@@ -2,55 +2,57 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-            <!--Header-->
-            <h1 class="page-header text-center">{{trans('gui.donnez_evaluation')}}</h1>
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @elseif(session('flash_message'))
-                <div class="alert alert-success">
-                    {{ session('flash_message') }}
-                </div>
-            @endif
-            <div class="well well-lg">
-                {!! Form::open(['route' => 'ratings.store', 'method' => 'POST','files' => true, 'id' => 'resto-form-id']) !!}
-                <div class="md-form form-group" id="search-dish-group" style="width: 100%">
-                    <input type="text" id="search-dish" class="form-control validate" name="searchdish" placeholder="Chercher un plat..." value="{{old('searchdish')}}">
-                    <input type="hidden" id="selected-dish" name="selecteddish" value="{{old('selecteddish')}}">
-                </div>
-                <div style="text-align: right;"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
-                <div class="md-form form-group" id="search-resto-group" style="width: 100%">
-                    <input type="text" id="search-resto" class="form-control validate" name="searchresto" placeholder="Chercher un restaurant..." value="{{old('searchresto')}}">
-                    <input type="hidden" id="selected-resto" name="selectedresto" value="{{old('selectedresto')}}">
-                </div>
-                <div style="text-align: right;"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
-                <div class="md-form rate-input" style="font-size: 30px">
-                    <label style="vertical-align: middle" for="temp-rating">Evaluez</label>
-                    <input type="hidden" class="rating" data-fractions="2" name="ratingvalue" id="temp-rating" value="{{old('ratingvalue')}}"/>
-                </div>
+        <div class="offset-md-2 col-md-8">
+            <div class="card">
+                <div class="card-block">
+                        <h2 class="card-title text-md-center">{{trans('gui.donnez_evaluation')}}</h2>
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @elseif(session('flash_message'))
+                        <div class="alert alert-success">
+                            {{ session('flash_message') }}
+                        </div>
+                    @endif
 
-                <div class="md-form">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="text" id="temp-email" class="form-control validate" placeholder="{{trans('gui.your_email')}}" name="ratingemail" value="{{old('ratingemail')}}">
-                        </div>
-                        <div class="col-md-12">
-                            <textarea type="text" class="md-textarea rating-comment-input validate" name="ratingcomment" placeholder="{{trans('gui.your_comment')}}">{{old('ratingcomment')}}</textarea>
-                        </div>
+                    {!! Form::open(['route' => 'ratings.store', 'method' => 'POST','files' => true, 'id' => 'resto-form-id']) !!}
+                    <div class="md-form form-group" id="search-dish-group" style="width: 100%">
+                        <input type="text" id="search-dish" class="form-control validate" name="searchdish" placeholder="Chercher un plat..." value="{{old('searchdish')}}">
+                        <input type="hidden" id="selected-dish" name="selecteddish" value="{{old('selecteddish')}}">
+                    </div>
+                    <div style="text-align: right;"><a href="#" onclick="openDishModal();">Vous ne trouvez pas le plat?</a></div>
+                    <div class="md-form form-group" id="search-resto-group" style="width: 100%">
+                        <input type="text" id="search-resto" class="form-control validate" name="searchresto" placeholder="Chercher un restaurant..." value="{{old('searchresto')}}">
+                        <input type="hidden" id="selected-resto" name="selectedresto" value="{{old('selectedresto')}}">
+                    </div>
+                    <div style="text-align: right;"><a href="#" onclick="openRestoModal();">Vous ne trouvez pas le restaurant?</a></div>
+                    <div class="md-form rate-input" style="font-size: 30px">
+                        <label style="vertical-align: middle" for="temp-rating">Evaluez</label>
+                        <input type="hidden" class="rating" data-fractions="2" name="ratingvalue" id="temp-rating" value="{{old('ratingvalue')}}"/>
                     </div>
 
-                </div>
+                    <div class="md-form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" id="temp-email" class="form-control validate" placeholder="{{trans('gui.your_email')}}" name="ratingemail" value="{{old('ratingemail')}}">
+                            </div>
+                            <div class="col-md-12">
+                                <textarea type="text" class="md-textarea rating-comment-input validate" name="ratingcomment" placeholder="{{trans('gui.your_comment')}}">{{old('ratingcomment')}}</textarea>
+                            </div>
+                        </div>
 
-                <div class="text-xs-center">
-                    <button class="btn btn-indigo" type="submit">{{trans('gui.send')}}</button>
+                    </div>
+
+                    <div class="text-md-center">
+                        <button class="btn btn-unique" type="submit">{{trans('gui.send')}}</button>
+                    </div>
+                    {!! Form::close() !!}
                 </div>
-                {!! Form::close() !!}
             </div>
         </div>
     </div>
@@ -71,8 +73,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button class="btn btn-unique btn-rounded" id="save-resto-btn">{{trans('gui.save')}}</button>
-                        <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">{{trans('gui.cancel')}}</button>
+                        <button class="btn btn-unique btn-rounded btn-sm" id="save-resto-btn">{{trans('gui.save')}}</button>
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm" data-dismiss="modal">{{trans('gui.cancel')}}</button>
                     </div>
                 {!! Form::close() !!}
 
@@ -98,8 +100,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                        <button class="btn btn-unique btn-rounded" id="save-dish-btn" type="submit">{{trans('gui.save')}}</button>
-                        <button type="button" class="btn btn-danger btn-rounded" data-dismiss="modal">{{trans('gui.cancel')}}</button>
+                        <button class="btn btn-unique btn-rounded btn-sm" id="save-dish-btn" type="submit">{{trans('gui.save')}}</button>
+                        <button type="button" class="btn btn-danger btn-rounded btn-sm" data-dismiss="modal">{{trans('gui.cancel')}}</button>
                 </div>
                     {!! Form::close() !!}
 

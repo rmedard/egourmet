@@ -14,12 +14,16 @@ return [
     'restaurants' => 'Restaurants',
     'messages' => 'Messages',
     'users' => 'Utilisateurs',
+    'ratings' => 'Evaluations',
     'user_messages' => 'Messages d\'utilisateurs',
     'create_resto' => 'Créer un restaurant',
     'create_dish' => 'Créer un plat',
     'donnez_evaluation' => 'Donnez-nous votre évaluation',
     'your_email' => 'Votre email',
+    'login' => 'Connectez-vous',
     'your_comment' => 'Votre commentaire (facultatif)',
+    'reviews_count' => 'Nbr de votes',
+    'reviews_avg' => 'Moyenne',
 
     /*Addresse*/
     'street' => 'Rue',
@@ -34,6 +38,7 @@ return [
     'users_management' => 'Gestion des utilisateurs',
     'users_msg_management' => 'Gestion des messages',
     'settings' => 'Paramètres',
+    'ratings_management' => 'Les évaluations',
 
     /*Model*/
     'model.name' => 'Nom',
@@ -54,8 +59,9 @@ return [
     'dish' => 'Plat',
     'restorant' => 'Restaurant',
     'message' => 'Message',
-    'ratings' => 'Votes',
     'address' => 'Adresse',
+    'email' => 'Adresse email',
+    'password' => 'Mot de passe',
     'website' => 'Website',
     'facebook' => 'Page facebook',
     'tel' => 'Téléphone',

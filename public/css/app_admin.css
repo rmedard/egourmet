@@ -24,3 +24,12 @@ body{
 .pagination > li > a, .pagination > li > span{
     border: none;
 }
+
+.card .card-footer {
+    padding-bottom: 0.75rem;
+    background: #373a3c;
+}
+
+.dark-skin .side-nav .logo-wrapper {
+    background: none;
+}

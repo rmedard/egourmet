@@ -3,64 +3,55 @@
 @section('content')
 <div class="container" id="login-page">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2" style="margin-top: 20px;">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
+        <div class="offset-md-2 col-md-8" style="margin-top: 20px;">
+            <!--Form with header-->
+            <div class="card">
+                <div class="card-block">
+                    <!--Header-->
+                    <div class="form-header elegant-color-dark darken-4">
+                        <h3><i class="fa fa-lock"></i> {{trans('gui.login')}}</h3>
+                    </div>
+                    <!--Body-->
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
                         {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
+                        <div class="md-form{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus placeholder="{{trans('gui.email')}}">
+                            @if ($errors->has('email'))
+                                <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
+                            @endif
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password">
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
+                        <div class="md-form{{ $errors->has('password') ? ' has-error' : '' }}">
+                            <i class="fa fa-lock prefix"></i>
+                            <input id="password" type="password" class="form-control" name="password" placeholder="{{trans('gui.password')}}">
+                            @if ($errors->has('password'))
+                                <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
+                            @endif
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
+                        <div class="text-xs-center">
+                            <button class="btn btn-deep-purple" type="submit">Login</button>
                         </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
                     </form>
+
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <div class="options">
+                            <p>Not a member? <a href="#">Sign Up</a></p>
+                            <p>Forgot <a href="{{ url('/password/reset') }}">Password?</a></p>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
+            <!--/Form with header-->
         </div>
     </div>
 </div>

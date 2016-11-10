@@ -8,7 +8,7 @@
         <title>eGourmet</title>
 
         <!-- Bootstrap -->
-        <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/mdb/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Materialize -->
         <link href="/assets/mdb/css/mdb.min.css" rel="stylesheet">
@@ -34,15 +34,21 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-        <script src="/assets/jquery/jquery-1.12.4.min.js"></script>
+        <script src="/assets/mdb/js/jquery-3.1.1.min.js"></script>
         <script src="/assets/jquery-ui/jquery-ui-1.12.1.min.js"></script>
 
     </head>
 
     <body>
-
-        @include('layouts.partials.navbar')
-        <div>@yield('content')</div>
+        <header>
+            @include('layouts.partials.navbar')
+        </header>
+        <main>
+            @yield('content')
+        </main>
         @include('layouts.partials.footer')
+        <script>
+            new WOW().init();
+        </script>
     </body>
 </html>

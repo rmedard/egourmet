@@ -45,4 +45,9 @@ class RatingsController extends Controller
         session()->flash('flash_message', trans('messages.evaluation_success'));
         return view('homeform');
     }
+
+    public function ratings(){
+        $restos = Resto::has('dishes')->orderBy('name', 'asc')->paginate(10);
+        return view('admin.data.ratings', compact('restos'));
+    }
 }

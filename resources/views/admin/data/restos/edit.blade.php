@@ -4,11 +4,9 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">{{trans('gui.add.resto')}}</h1>
-        </div>
         <!-- /.col-lg-12 -->
-        <div class="col-md-8 col-lg-8 col-sm-12 col-sx-12">
+        <div class="col-md-10 col-lg-10 col-sm-12 col-sx-12">
+            <h1 class="display-4">{{trans('gui.add.resto')}}</h1>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
@@ -25,8 +23,8 @@
                     <label for="resto-form-enabled">{{trans('gui.model.enabled')}}</label>
                 </fieldset>
                 <div>
-                    <button class="btn btn-unique btn-rounded" type="submit">{{trans('gui.save')}}</button>
-                    <a class="btn btn-danger btn-rounded" href="{{route('restos.index')}}">{{trans('gui.cancel')}}</a>
+                    <button class="btn btn-unique btn-rounded btn-sm" type="submit">{{trans('gui.save')}}</button>
+                    <a class="btn btn-danger btn-rounded btn-sm" href="{{route('restos.index')}}">{{trans('gui.cancel')}}</a>
                 </div>
             {!! Form::close() !!}
         </div>

@@ -1,47 +1,39 @@
 
 <div class="md-form">
-    {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'resto-form-name'])}}
-    <label for="resto-form-name" class="">{{trans('gui.model.name')}}</label>
+    {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'resto-form-name', 'placeholder' =>trans('gui.model.name')])}}
 </div>
 <div class="row">
     <div class="col-md-8">
         <div class="md-form">
-            {{Form::text('rue', isset($resto) ? $resto->address->rue : null, ['class' => 'form-control validate', 'id' => 'resto-form-rue'])}}
-            <label for="resto-form-rue" class="">{{trans('gui.street')}}</label>
+            {{Form::text('rue', isset($resto) ? $resto->address->rue : null, ['class' => 'form-control validate', 'id' => 'resto-form-rue', 'placeholder' =>trans('gui.street')])}}
         </div>
     </div>
     <div class="col-md-4">
         <div class="md-form">
-            {{Form::text('numero', isset($resto) ? $resto->address->numero : null, ['class' => 'form-control validate', 'id' => 'resto-form-numero'])}}
-            <label for="resto-form-numero" class="">{{trans('gui.number')}}</label>
+            {{Form::text('numero', isset($resto) ? $resto->address->numero : null, ['class' => 'form-control validate', 'id' => 'resto-form-numero', 'placeholder' =>trans('gui.number')])}}
         </div>
     </div>
     <div class="col-md-8">
         <div class="md-form">
-            {{Form::text('commune', isset($resto) ? $resto->address->commune : null, ['class' => 'form-control validate', 'id' => 'resto-form-commune'])}}
-            <label for="resto-form-commune" class="">{{trans('gui.commune')}}</label>
+            {{Form::text('commune', isset($resto) ? $resto->address->commune : null, ['class' => 'form-control validate', 'id' => 'resto-form-commune', 'placeholder' =>trans('gui.commune')])}}
         </div>
     </div>
     <div class="col-md-4">
         <div class="md-form">
-            {{Form::text('zip', isset($resto) ? $resto->address->codepostal : null, ['class' => 'form-control validate', 'id' => 'resto-form-zip'])}}
-            <label for="resto-form-zip" class="">{{trans('gui.zip')}}</label>
+            {{Form::text('zip', isset($resto) ? $resto->address->codepostal : null, ['class' => 'form-control validate', 'id' => 'resto-form-zip', 'placeholder' =>trans('gui.zip')])}}
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-md-8">
         <div class="md-form">
-            {{Form::text('tel', null, ['class' => 'form-control validate', 'id' => 'resto-form-tel'])}}
-            <label for="resto-form-tel" class="">{{trans('gui.tel')}}</label>
+            {{Form::text('tel', null, ['class' => 'form-control validate', 'id' => 'resto-form-tel', 'placeholder' =>trans('gui.tel')])}}
         </div>
         <div class="md-form">
-            {{Form::text('website', null, ['class' => 'form-control validate', 'id' => 'resto-form-website'])}}
-            <label for="resto-form-website" class="">{{trans('gui.website')}}</label>
+            {{Form::text('website', null, ['class' => 'form-control validate', 'id' => 'resto-form-website', 'placeholder' =>trans('gui.website')])}}
         </div>
         <div class="md-form">
-            {{Form::text('facebook', null, ['class' => 'form-control validate', 'id' => 'resto-form-facebook'])}}
-            <label for="resto-form-facebook" class="">{{trans('gui.facebook')}}</label>
+            {{Form::text('facebook', null, ['class' => 'form-control validate', 'id' => 'resto-form-facebook', 'placeholder' =>trans('gui.facebook')])}}
         </div>
     </div>
     <div class="col-md-4" style="text-align: center;">

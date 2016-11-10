@@ -4,15 +4,13 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">{{trans('gui.users_msg_management')}}</h1>
-        </div>
+            <h1 class="display-4">{{trans('gui.users_msg_management')}}</h1>
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
         <div class="table-responsive">
             <table class="table table-hover">
-                <thead>
+                <thead class="table-inverse">
                 <tr>
                     <td>#</td>
                     <td><b>Sender name</b></td>

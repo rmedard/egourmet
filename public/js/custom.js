@@ -16,11 +16,11 @@ if($('#dishes-list-main').children().length != 0){
     $('html,body').animate({scrollTop: hauteur}, 'slow');
 }
 
-$('#login-page').parent().css('background', 'url("/images/core/restaurant_small.jpg")');
+//$('#login-page').parent().css('background', 'url("/images/core/restaurant_small.jpg")');
 
 $('.rating').rating({
-    filled: 'glyphicon glyphicon-heart',
-    empty: 'glyphicon glyphicon-heart-empty'
+    filled: 'fa fa-heart',
+    empty: 'fa fa-heart-o'
 });
 
 $('.alert-success').delay(3000).slideUp(300);

@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
     })->name('settings');
 
     Route::post('/search_resto_admin', 'SearchController@searchResto')->name('search.resto');
+
+    Route::get('/ratings', 'RatingsController@ratings')->name('ratings.overview');
 });
 
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');

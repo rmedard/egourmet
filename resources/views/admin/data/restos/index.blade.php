@@ -4,12 +4,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">{{trans('gui.restos_management')}}</h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <div class="row">
+        <h1 class="display-4">{{trans('gui.restos_management')}}</h1>
         <div class="col-md-6">
             {!! Form::open(['route' => 'search.resto', 'method' => 'POST']) !!}
             <div class="input-group">
@@ -26,19 +21,18 @@
         </div>
     </div>
     <div class="row">
-
         <div class="table-responsive">
             <table class="table table-hover">
-                <thead>
-                <tr>
-                    <td>#</td>
-                    <td><b>{{trans('gui.model.photo')}}</b></td>
-                    <td><b>{{trans('gui.model.name')}}</b></td>
-                    <td><b>{{trans('gui.address')}}</b></td>
-                    <td><b>{{trans('gui.website')}}</b></td>
-                    <td><b>{{trans('gui.model.enabled')}}</b></td>
-                    <td><b>{{trans('gui.options')}}</b></td>
-                </tr>
+                <thead class="table-inverse">
+                    <tr>
+                        <th>#</th>
+                        <th>{{trans('gui.model.photo')}}</th>
+                        <th>{{trans('gui.model.name')}}</th>
+                        <th>{{trans('gui.address')}}</th>
+                        <th>{{trans('gui.website')}}</th>
+                        <th>{{trans('gui.model.enabled')}}</th>
+                        <th>{{trans('gui.options')}}</th>
+                    </tr>
                 </thead>
                 <tbody>
                 @foreach($restos as $resto)
@@ -58,21 +52,20 @@
                         <td>{{$resto->website}}</td>
                         <td>{{$resto->enabled ? trans('gui.yes') : trans('gui.no')}}</td>
                         <td>
-                            <div class="btn-group btn-group-xs" role="group" aria-label="...">
-                                <a href="{{route('restos.edit', ['id' => $resto->id])}}" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="{{trans('gui.edit')}}">
-                                    <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                </a>
-                                <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="{{trans('gui.delete')}}">
-                                    <i class="fa fa-times" aria-hidden="true"></i>
-                                </button>
-                            </div>
-
+                            <a href="{{route('restos.edit', ['id' => $resto->id])}}" class="teal-text" data-toggle="tooltip" data-placement="top" title="{{trans('gui.edit')}}">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                            <a class="red-text" data-toggle="tooltip" data-placement="top" title="{{trans('gui.delete')}}">
+                                <i class="fa fa-times"></i>
+                            </a>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-            {{ $restos->links() }}
+
+                {{ $restos->links('vendor.pagination.custom') }}
+
         </div>
     </div>
 @endsection

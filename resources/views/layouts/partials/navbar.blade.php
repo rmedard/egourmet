@@ -1,37 +1,29 @@
-<!-- Navbar -->
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+ <!--Navbar-->
+<nav class="navbar navbar-dark navbar-fixed-top elegant-color-dark">
+    <!-- Collapse button-->
+    <!--Navbar Brand-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx" id="collapser">
+        <i class="fa fa-bars"></i>
+    </button>
     <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">
-                <img src="/images/core/egourmet_logo.png">
-            </a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!--Links-->
+        <a class="navbar-brand" href="/">
+            <img src="/images/core/logo.png">
+        </a>
+        <!--Collapse content-->
+        <div class="collapse navbar-toggleable-xs" id="collapseEx" style="font-size: 1.2em;">
             <ul class="nav navbar-nav" style="display: none">
-                <li><a href="/">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" id="about-link">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right" style="display: none">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <i class="glyphicon glyphicon-user"></i>
-                        Se connecter <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('login')}}">Login</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#best-features">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#examples-of-use">Contact</a>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
+        </div><!--/.Collapse content-->
+    </div>
 </nav>
+<!--/.Navbar-->

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class resto extends Model
@@ -26,4 +27,11 @@ class resto extends Model
         }
     }
 
+    public function getOverallVotesCount(){
+        return DB::table('dish_resto')->where('resto_id', $this->id)->sum('reviews_count');
+    }
+
+    public function getOverallAverageRate(){
+        return DB::table('dish_resto')->where('resto_id', $this->id)->avg('average_rate');
+    }
 }

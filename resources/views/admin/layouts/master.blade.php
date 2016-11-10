@@ -12,7 +12,7 @@
     <title>@yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/mdb/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- sbadmin CSS -->
     <link href="/assets/sbadmin/css/sb-admin-2.css" rel="stylesheet">
@@ -33,7 +33,7 @@
     <link href="/css/app_admin.css" rel="stylesheet" type="text/css">
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
-    <script src="/assets/jquery/jquery-1.12.4.min.js"></script>
+    <script src="/assets/mdb/js/jquery-3.1.1.min.js"></script>
     <script src="/assets/jquery-ui/jquery-ui-1.12.1.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -45,158 +45,112 @@
 
 </head>
 
-<body>
-
-<div id="wrapper">
-
+<body class="fixed-sn dark-skin">
+    <header>
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/admin">
-                <img src="/images/core/egourmet_logo.png">
-            </a>
-        </div>
-        <!-- /.navbar-header -->
+        <div>
+            <!-- SideNav slide-out button -->
+            <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            <!--/. SideNav slide-out button -->
 
-        <ul class="nav navbar-top-links navbar-right">
-            <span style="color: #337ab7">{{trans('gui.welcome')}} {{Auth::check() ? Auth::user()->name : 'unknown'}}</span>
-            <li class="dropdown" style="display: none">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> New Comment
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                <span class="pull-right text-muted small">12 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-tasks fa-fw"></i> New Task
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">
-                            <div>
-                                <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                <span class="pull-right text-muted small">4 minutes ago</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a class="text-center" href="#">
-                            <strong>See All Alerts</strong>
-                            <i class="fa fa-angle-right"></i>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-alerts -->
-            </li>
-            <!-- /.dropdown -->
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-user -->
-            </li>
-            <!-- /.dropdown -->
-        </ul>
-        <!-- /.navbar-top-links -->
+            <!-- Sidebar navigation -->
+            <ul id="slide-out" class="side-nav fixed default-side-nav light-side-nav">
 
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
+                <!-- Logo -->
+                <div class="logo-wrapper">
+                    <a href="/admin"><img src="/images/core/egourmet_logo.png" class="img-fluid flex-center"></a>
+                </div>
+                <!--/. Logo -->
+
+                <!-- Side navigation links -->
+                <ul class="collapsible">
 
                     <li class="active">
-                        <a href="{{route('admin')}}"><i class="fa fa-dashboard fa-fw"></i>{{trans('gui.dashboard')}}</a>
+                        <a href="{{route('admin')}}" class="waves-effect text-white"><i class="fa fa-dashboard fa-fw"></i>{{trans('gui.dashboard')}}</a>
                     </li>
 
                     <li>
-                        <a href="{{route('restos.index')}}"><i class="fa fa-home fa-fw"></i>{{trans('gui.restaurants')}}</a>
+                        <a href="{{route('restos.index')}}" class="waves-effect text-white"><i class="fa fa-home fa-fw"></i>{{trans('gui.restaurants')}}</a>
                     </li>
 
                     <li>
-                        <a href="{{route('dishes.index')}}"><i class="fa fa-cutlery fa-fw"></i>{{trans('gui.dishes')}}</a>
+                        <a href="{{route('dishes.index')}}" class="waves-effect text-white"><i class="fa fa-cutlery fa-fw"></i>{{trans('gui.dishes')}}</a>
                     </li>
 
                     <li>
-                        <a href="{{route('users.index')}}"><i class="fa fa-users fa-fw"></i>{{trans('gui.users')}}</a>
+                        <a href="{{route('ratings.overview')}}" class="waves-effect text-white"><i class="fa fa-star-half-o fa-fw"></i>{{trans('gui.ratings')}}</a>
                     </li>
 
                     <li>
-                        <a href="{{route('messages.index')}}"><i class="fa fa-envelope fa-fw"></i>{{trans('gui.user_messages')}}</a>
+                        <a href="{{route('users.index')}}" class="waves-effect text-white"><i class="fa fa-users fa-fw"></i>{{trans('gui.users')}}</a>
                     </li>
 
                     <li>
-                        <a href="{{route('settings')}}"><i class="fa fa-cog fa-fw"></i>{{trans('gui.settings')}}</a>
+                        <a href="{{route('messages.index')}}" class="waves-effect text-white"><i class="fa fa-envelope fa-fw"></i>{{trans('gui.user_messages')}}</a>
+                    </li>
+
+                    <li>
+                        <a href="{{route('settings')}}" class="waves-effect text-white"><i class="fa fa-cog fa-fw"></i>{{trans('gui.settings')}}</a>
                     </li>
                 </ul>
-            </div>
-            <!-- /.sidebar-collapse -->
+                <!--/. Side navigation links -->
+            </ul>
+            <!--/. Sidebar navigation -->
+
         </div>
         <!-- /.navbar-static-side -->
-    </nav>
 
-    <div id="page-wrapper">
+        <nav class="navbar navbar-fixed-top scrolling-navbar double-nav">
+
+            <!-- SideNav slide-out button -->
+            <div class="float-xs-left">
+                <a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-bars"></i></a>
+            </div>
+
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn">
+                <p>eGourmet Dashboard</p>
+            </div>
+
+            <ul class="nav navbar-nav float-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link"><i class="fa fa-envelope"></i> <span class="hidden-sm-down">Contact</span></a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link"><i class="fa fa-comments-o"></i> <span class="hidden-sm-down">Support</span></a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a id="dropdown-user-menu" class="nav-link dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user"> Profile</i>
+                    </a>
+                    <div class="dropdown-menu dropdown-primary dd-right" aria-labelledby="dropdown-user-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                        <a class="dropdown-item" href="#">User profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="{{route('logout')}}">Logout</a>
+                    </div>
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+        </nav>
+    </header>
+    <main>
         @if(session('flash_message'))
             <div class="alert alert-success">
                 {{ session('flash_message') }}
             </div>
         @endif
         @yield('content')
-
-    </div>
+    </main>
     <!-- /#page-wrapper -->
-
-</div>
 <!-- /#wrapper -->
 
-<!-- Bootstrap Core JavaScript -->
-<script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-
 <script src="/assets/mdb/js/tether.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/assets/mdb/js/bootstrap.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
 <script src="/assets/sbadmin/js/sb-admin-2.js"></script>
