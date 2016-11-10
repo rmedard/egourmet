@@ -32,6 +32,6 @@ class resto extends Model
     }
 
     public function getOverallAverageRate(){
-        return DB::table('dish_resto')->where('resto_id', $this->id)->avg('average_rate');
+        return round(DB::table('dish_resto')->where('resto_id', $this->id)->avg('average_rate'), 2);
     }
 }
