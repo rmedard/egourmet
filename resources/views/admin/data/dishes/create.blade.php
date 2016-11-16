@@ -6,7 +6,7 @@
     <div class="row">
         <!-- /.col-lg-12 -->
         <div class="col-md-10 col-lg-10 col-sm-12 col-sx-12">
-            <h1 class="display-4">{{trans('gui.add.resto')}}</h1>
+            <h1 class="display-4">{{trans('gui.add.dish')}}</h1>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>
