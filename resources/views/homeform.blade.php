@@ -91,12 +91,10 @@
                     {!! Form::open(['route' => 'any.dishes.store', 'method' => 'POST', 'id' => 'dish-form-modal-id']) !!}
                 <div class="modal-body">
                     <div class="md-form">
-                        <label for="dish-name-id">{{trans('gui.model.name')}}</label>
-                        {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'dish-name-id'])}}
+                        {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'dish-name-id', 'placeholder' => trans('gui.model.name')])}}
                     </div>
                     <div class="md-form">
-                        {{Form::text('cuisine', null, ['class' => 'form-control validate', 'id' => 'dish-cuisine-id'])}}
-                        <label for="dish-cuisine-id">{{trans('gui.cuisine')}}</label>
+                        {{Form::text('cuisine', null, ['class' => 'form-control validate', 'id' => 'dish-cuisine-id', 'placeholder' => trans('gui.cuisine')])}}
                     </div>
                 </div>
                 <div class="modal-footer">
