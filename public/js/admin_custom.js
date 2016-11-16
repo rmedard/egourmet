@@ -3,7 +3,9 @@
  */
 
 //To allow mdb drop down select
-$('.mdb-select').material_select();
+$(document).ready(function() {
+    $('.mdb-select').material_select();
+});
 
 // SideNav Initialization
 $(".button-collapse").sideNav();
