@@ -9,10 +9,8 @@ use App\Repositories\Contracts\RestosContract;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-use Intervention\Image\Facades\Image;
 
 class RestosController extends Controller
 {
@@ -93,7 +91,7 @@ class RestosController extends Controller
         $resto->enabled = isset($request['enabled']);
 
         if($request->hasFile('mainphoto')){
-            $resto->mainphoto = $this->processImage($request);
+            $resto->mainphoto = $this->restosRepo->processImage($request);
         }
 
         $address = new Address();
@@ -163,32 +161,12 @@ class RestosController extends Controller
             'zip.required' => trans('messages.restozip_required')
         ));
         if(session()->has('old_photo')){
-            $this->s3->delete(session('old_photo'));
+            if(isset($request->mainphoto)){
+                $this->s3->delete(session('old_photo'));
+            }
             session()->forget('old_photo');
         }
-        
-        //Do all this is repo update
-        $resto = $this->restosRepo->find($id);
-        $restoData = [
-            'name' => $request->name,
-            'tel' => $request->tel,
-            'website' => $request->website,
-            'facebook' => $request->facebook,
-            'enabled' => isset($request->enabled)
-        ];
-        if($request->hasFile('mainphoto')){
-            $restoData['mainphoto'] = $this->processImage($request);
-        }
-        $addressData = [
-            'rue' => $request->rue,
-            'numero' => $request->numero,
-            'codepostal' => $request->zip,
-            'commune' => $request->commune
-        ];
-        $resto->update($restoData);
-        $resto->address->update($addressData);
-        //Until here
-        
+        $this->restosRepo->update($request, $id);
         $restos = $this->restosRepo->all();
         session()->flash('flash_message', trans('messages.resto_update_success'));
         return redirect('admin/restos')->with('restos', $restos);
@@ -203,16 +181,5 @@ class RestosController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    private function processImage(Request $request){
-        $photoFile = $request->file('mainphoto');
-        $filename = 'resto_' . time() . '.jpg';
-        Image::make($photoFile)->resize(200, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })->save('temp/'.$filename);
-        $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
-        Storage::delete('temp/'.$filename);
-        return $path;
     }
 }

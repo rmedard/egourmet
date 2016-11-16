@@ -22,4 +22,6 @@ interface RestosContract
     public function update(Request $request, $resto_id);
 
     public function delete($resto_id);
+
+    public function processImage(Request $request);
 }

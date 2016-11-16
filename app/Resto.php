@@ -2,13 +2,24 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class resto extends Model
 {
+    use Sluggable;
+
     protected $fillable = ['address_id', 'name', 'mainphoto', 'tel', 'website', 'facebook', 'enabled'];
+
+    public function sluggable(){
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function address(){
         return $this->belongsTo(Address::class);

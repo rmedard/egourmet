@@ -10,10 +10,21 @@ namespace App\Repositories;
 
 use App\Resto;
 use App\Repositories\Contracts\RestosContract;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class RestosRepository implements RestosContract
 {
+
+    private $s3;
+    private $upload_dir;
+
+    public function __construct(){
+        $this->s3 = Storage::disk('s3');
+        $this->upload_dir = config('filesystems.disks.s3.folder').'/restos';
+    }
 
     public function all()
     {
@@ -32,11 +43,40 @@ class RestosRepository implements RestosContract
 
     public function update(Request $request, $resto_id)
     {
-        Resto::with('address')->find($resto_id)->update($request);
+        $resto = Resto::find($resto_id);
+        $restoData = [
+            'name' => $request->name,
+            'tel' => $request->tel,
+            'website' => $request->website,
+            'facebook' => $request->facebook,
+            'enabled' => isset($request->enabled)
+        ];
+        if($request->hasFile('mainphoto')){
+            $restoData['mainphoto'] = $this->processImage($request);
+        }
+        $addressData = [
+            'rue' => $request->rue,
+            'numero' => $request->numero,
+            'codepostal' => $request->zip,
+            'commune' => $request->commune
+        ];
+        $resto->update($restoData);
+        $resto->address->update($addressData);
     }
 
     public function delete($resto_id)
     {
         Resto::destroy($resto_id);
+    }
+
+    public function processImage(Request $request){
+        $photoFile = $request->file('mainphoto');
+        $filename = 'resto_' . time() . '.jpg';
+        Image::make($photoFile)->resize(200, null, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save('temp/'.$filename);
+        $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
+        Storage::delete('temp/'.$filename);
+        return $path;
     }
 }

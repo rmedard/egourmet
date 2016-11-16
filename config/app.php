@@ -169,6 +169,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laratrust\LaratrustServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
         //
         /*
          * Application Service Providers...

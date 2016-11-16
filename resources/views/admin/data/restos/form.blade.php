@@ -39,9 +39,9 @@
     <div class="col-md-4" style="text-align: center;">
         <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                {!! Html::image(isset($resto) ? $resto->mainphoto : config('constants.noresto'), 'Choose photo', ['width' => 150, 'height' => 150]) !!}
+                {!! Html::image(isset($resto) ? $resto->mainphoto : config('constants.noresto'), 'Choose photo', ['width' => 150, 'height' => 'auto']) !!}
             </div>
-            <div class="fileinput-preview fileinput-exists thumbnail" style="width: auto; max-height: 170px;"></div>
+            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 170px;"></div>
             <div class="text-center">
                 <span class="btn btn-sm btn-default btn-file">
                     <span class="fileinput-new">{{trans('gui.choose_photo')}}</span>

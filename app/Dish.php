@@ -2,12 +2,14 @@
 
 namespace App;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Dish extends Model
 {
     Use SearchableTrait;
+    Use Sluggable;
 
     protected $searchable = [
         'columns' => [
@@ -16,6 +18,14 @@ class Dish extends Model
     ];
 
     protected $fillable = ['name', 'mainphoto', 'cuisine_id', 'enabled'];
+
+    public function sluggable(){
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     public function cuisine(){
         return $this->belongsTo(Cuisine::class);
