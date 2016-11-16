@@ -6,10 +6,10 @@
  * Time: 23:26
  */
 
-namespace app\Repositories\Contracts;
+namespace App\Repositories\Contracts;
 
 
 interface CuisinesContract
 {
-
+    public function all();
 }

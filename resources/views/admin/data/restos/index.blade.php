@@ -8,7 +8,7 @@
         <div class="col-md-6">
             {!! Form::open(['route' => 'search.resto', 'method' => 'POST']) !!}
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Chercher un restaurant..." id="search-resto-admin">
+                <input type="text" class="form-control" placeholder="{{trans('gui.search.resto')}}" id="search-resto-admin">
                 <input type="hidden" id="selected-resto-admin" name="selectedresto">
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="submit">Go!</button>

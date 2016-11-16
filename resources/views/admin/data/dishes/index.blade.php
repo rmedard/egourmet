@@ -4,8 +4,21 @@
 
 @section('content')
     <div class="row">
-            <h1 class="display-4">{{trans('gui.dishes_management')}}</h1>
-        <!-- /.col-lg-12 -->
+        <h1 class="display-4">{{trans('gui.dishes_management')}}</h1>
+        <div class="col-md-6">
+            {!! Form::open(['route' => 'search.dish', 'method' => 'POST']) !!}
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="{{trans('gui.search.dish')}}" id="search-dish-admin">
+                <input type="hidden" id="selected-dish-admin" name="selecteddish">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">Go!</button>
+                </span>
+            </div>
+            {!! Form::close() !!}
+        </div>
+        <div class="col-md-6">
+            <a class="btn-floating btn-small blue" href="{{route('dishes.create')}}" data-toggle="tooltip" data-placement="top" title="{{trans('gui.add.dish')}}"><i class="fa fa-plus"></i></a>
+        </div>
     </div>
     <div class="row">
         <div class="table-responsive">

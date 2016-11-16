@@ -16,7 +16,7 @@
                     </ul>
                 </div>
             @endif
-            {!! Form::model($dish, ['route' => ['dishes.update', $dish->id], 'method' => 'PATCH', 'id' => 'dish-update-form-id']) !!}
+            {!! Form::open(['route' => 'dishes.store', 'method' => 'POST', 'id' => 'dish-create-form-id']) !!}
             @include('admin.data.dishes.form')
             <button class="btn btn-unique btn-rounded btn-sm" id="save-dish-btn" type="submit">{{trans('gui.save')}}</button>
             <button type="button" class="btn btn-danger btn-rounded btn-sm" data-dismiss="modal">{{trans('gui.cancel')}}</button>

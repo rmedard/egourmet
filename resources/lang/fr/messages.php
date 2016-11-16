@@ -21,9 +21,12 @@ return [
     'restonumero_exists' => 'Il faut préciser le numéro de rue',
     'restocommune_required' => 'Il faut préciser le nom de la commune',
     'restozip_required' => 'Il faut préciser le code postal',
+    'cuisine_required' => 'Il faut sélectionner le type de cuisine',
 
     /*Success messages*/
     'evaluation_success' => 'Merci pour votre évaluation! Nous reprendrons contact avec vous si vous faites partie des heureux gagnants du Bongo',
     'resto_creat_success' => 'Merci, le nouveau restaurant est enregisté!',
     'resto_update_success' => 'Merci, le restaurant est mis à jour!',
+    'dish_creat_success' => 'Merci, le nouveau plat est enregisté!',
+    'dish_update_success' => 'Merci, le plat est mis à jour!',
 ];

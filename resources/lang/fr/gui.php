@@ -50,6 +50,11 @@ return [
     /*Model operations*/
     'add.resto' => 'Ajouter un restaurant',
     'edit.resto' => 'Modifier un restaurant',
+    'search.resto' => 'Chercher un restaurant...',
+    'add.dish' => 'Ajouter un plat',
+    'edit.dish' => 'Modifier un plat',
+    'search.dish' => 'Chercher un plat...',
+    'select.cuisine' => 'Sélectionnez le nom de cuisine',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
 

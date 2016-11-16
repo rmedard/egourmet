@@ -17,7 +17,7 @@ class DishesRepository implements DishesContract
 
     public function all()
     {
-        return Dish::with('cuisine')->orderBy('created_at', 'desc')->paginate(20);
+        return Dish::with('cuisine')->orderBy('name', 'asc')->paginate(20);
     }
 
     public function create(array $dish_data)
@@ -27,7 +27,7 @@ class DishesRepository implements DishesContract
 
     public function find($dish_id)
     {
-        return Dish::findOrFail($dish_id);
+        return Dish::with('cuisine')->findOrFail($dish_id);
     }
 
     public function update($dish_id, array $dish_data)

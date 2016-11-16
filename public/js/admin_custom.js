@@ -1,6 +1,10 @@
 /**
  * Created by medard on 26/09/16.
  */
+
+//To allow mdb drop down select
+$('.mdb-select').material_select();
+
 // SideNav Initialization
 $(".button-collapse").sideNav();
 
@@ -18,5 +22,14 @@ $('#search-resto-admin').autocomplete({
     autoFocus: true,
     select: function(event, ui){
         $('#selected-resto-admin').val(ui.item.id);
+    }
+});
+
+$('#search-dish-admin').autocomplete({
+    source: '/search_dish',
+    minlength: 1,
+    autoFocus: true,
+    select: function(event, ui){
+        $('#selected-dish-admin').val(ui.item.id);
     }
 });

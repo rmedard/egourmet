@@ -1,6 +1,9 @@
 /**
  * Created by Mrebero on 21/07/2016.
  */
+//To allow mdb drop down select
+$('.mdb-select').material_select();
+
 $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
     var token;
     if (!options.crossDomain) {

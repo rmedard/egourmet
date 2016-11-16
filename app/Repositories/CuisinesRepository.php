@@ -6,10 +6,17 @@
  * Time: 23:27
  */
 
-namespace app\Repositories\Contracts;
+namespace App\Repositories;
 
+
+use App\Cuisine;
+use App\Repositories\Contracts\CuisinesContract;
 
 class CuisinesRepository implements CuisinesContract
 {
 
+    public function all()
+    {
+        return Cuisine::pluck('name', 'id');
+    }
 }

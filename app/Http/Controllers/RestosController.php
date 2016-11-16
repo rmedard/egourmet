@@ -101,8 +101,8 @@ class RestosController extends Controller
         $address->commune = $request['commune'];
         $address = Address::create($address->toArray());
         $address->resto()->save($resto);
-        $results[] = ['id'=>$resto->id,'value'=>$resto->name];
         if($request->ajax()){
+            $results[] = ['id'=>$resto->id,'value'=>$resto->name];
             return $results;
         }else{
             $restos = $this->restosRepo->all();
