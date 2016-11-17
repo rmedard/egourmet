@@ -17,6 +17,6 @@ class CuisinesRepository implements CuisinesContract
 
     public function all()
     {
-        return Cuisine::pluck('name', 'id');
+        return Cuisine::orderBy('name', 'asc')->pluck('name', 'id');
     }
 }
