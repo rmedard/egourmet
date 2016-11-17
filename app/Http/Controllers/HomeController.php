@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dish;
 use App\Message;
+use App\Repositories\Contracts\CuisinesContract;
 use App\Repositories\Contracts\DishesContract;
 use App\Repositories\Contracts\RestosContract;
 use App\Resto;
@@ -21,13 +22,15 @@ class HomeController extends Controller
 
     protected $dishRepo;
     protected $restoRepo;
+    protected $cuisinesRepo;
     public $message;
 
-    public function __construct(DishesContract $dishRepo, RestosContract $restoRepo)
+    public function __construct(DishesContract $dishesContract, RestosContract $restosContract, CuisinesContract $cuisinesContract)
     {
         $this->message = null;
-        $this->dishRepo = $dishRepo;
-        $this->restoRepo = $restoRepo;
+        $this->dishRepo = $dishesContract;
+        $this->restoRepo = $restosContract;
+        $this->cuisinesRepo = $cuisinesContract;
     }
 
     public function home(){
@@ -125,6 +128,7 @@ class HomeController extends Controller
     }
 
     public function homeform(){
-        return view('homeform', compact('message'));
+        $cuisines_list = $this->cuisinesRepo->all();
+        return view('homeform', compact('message', 'cuisines_list'));
     }
 }

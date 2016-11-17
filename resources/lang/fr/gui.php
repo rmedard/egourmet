@@ -54,7 +54,7 @@ return [
     'add.dish' => 'Ajouter un plat',
     'edit.dish' => 'Modifier un plat',
     'search.dish' => 'Chercher un plat...',
-    'select.cuisine' => 'Sélectionnez le nom de cuisine',
+    'select.cuisine' => 'Sélectionnez le type de cuisine',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
 

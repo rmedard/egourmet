@@ -94,7 +94,7 @@
                         {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'dish-name-id', 'placeholder' => trans('gui.model.name')])}}
                     </div>
                     <div class="md-form">
-                        {{Form::text('cuisine', null, ['class' => 'form-control validate', 'id' => 'dish-cuisine-id', 'placeholder' => trans('gui.cuisine')])}}
+                        {{Form::select('cuisine', $cuisines_list, isset($dish) ? $dish->cuisine->id : null, ['class' => 'mdb-select colorful-select dropdown-dark', 'id' => 'modal-dish-cuisine-id', 'placeholder' => trans('gui.select.cuisine')])}}
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -8,9 +8,9 @@
 
 return [
     /*Error messages*/
-    'searchdish_required' => 'Il faut préciser le plat',
+    'searchdish_required' => 'Il faut préciser le nom du plat',
     'searchdish_exists' => 'Le plat que vous avez saisi n\'existe pas ',
-    'searchresto_required' => 'Il faut préciser le restaurant',
+    'searchresto_required' => 'Il faut préciser le nom du restaurant',
     'searchresto_exists' => 'Le restaurant que vous avez saisi n\'existe pas',
     'rating_email_required' => 'Votre email est obligatoire',
     'rating_email_email' => 'Votre email n\'est pas correct',

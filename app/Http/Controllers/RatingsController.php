@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Dish;
 use App\Rating;
+use App\Repositories\Contracts\CuisinesContract;
 use App\Resto;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,12 @@ use App\Http\Requests;
 
 class RatingsController extends Controller
 {
+    protected $cuisinesRepo;
+
+    public function __construct(CuisinesContract $cuisinesContract){
+        $this->cuisinesRepo = $cuisinesContract;
+    }
+
     private $rules = [
         'searchdish' => ['required', 'exists:dishes,name'],
         'searchresto' => ['required', 'exists:restos,name'],
@@ -43,7 +50,8 @@ class RatingsController extends Controller
         $rating->comment = $request->ratingcomment;
         $rating->save();
         session()->flash('flash_message', trans('messages.evaluation_success'));
-        return view('homeform');
+        $cuisines_list = $this->cuisinesRepo->all();
+        return redirect()->route('home.home')->with('cuisines_list', $cuisines_list);
     }
 
     public function ratings(){

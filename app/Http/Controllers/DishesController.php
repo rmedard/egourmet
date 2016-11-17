@@ -65,12 +65,7 @@ class DishesController extends Controller
             'cuisine.required' => trans('messages.cuisine_required')
         ));
 
-
-        if ($request->ajax()){
-            $cuisine = Cuisine::firstOrCreate(['name' => $request->cuisine]);
-        }else{
-            $cuisine = Cuisine::find($request->cuisine);
-        }
+        $cuisine = Cuisine::find($request->cuisine);
 
         $dish = Dish::firstOrCreate(['name' => $request->name, 'cuisine_id' => $cuisine->id]);
         $dish->enabled = true;
