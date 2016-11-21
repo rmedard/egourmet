@@ -91,7 +91,7 @@
     </div>
     <div class="row">
         <div class="card card-inverse">
-            <h3 class="card-header">Ratings</h3>
+            <h4 class="card-header">Ratings <a href="{{route('ratings.overview')}}" class="pull-right text-white">Voir les détails  <i class="fa fa-arrow-circle-right"></i></a></h4>
             <div class="card-block">
                 <h6>{{trans('gui.ratings.year')}}: <span class="tag green" id="year-nbr"></span></h6>
                 <h6>{{trans('gui.ratings.total')}}: <span class="tag blue" id="total-ratings"></span></h6>
