@@ -91,10 +91,10 @@
     </div>
     <div class="row">
         <div class="card card-inverse">
-            <h3 class="card-header card-dark">Ratings</h3>
+            <h3 class="card-header">Ratings</h3>
             <div class="card-block">
-                <p>{{trans('gui.ratings.year')}}: <b id="year-nbr"></b></p>
-                <p>{{trans('gui.ratings.total')}}: <b id="total-ratings"></b></p>
+                <h6>{{trans('gui.ratings.year')}}: <span class="tag green" id="year-nbr"></span></h6>
+                <h6>{{trans('gui.ratings.total')}}: <span class="tag blue" id="total-ratings"></span></h6>
                 <canvas id="ratingsChart"></canvas>
             </div>
         </div>
