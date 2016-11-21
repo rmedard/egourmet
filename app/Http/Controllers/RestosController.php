@@ -139,7 +139,8 @@ class RestosController extends Controller
             session()->forget('old_photo');
             $resto->mainphoto = config('constants.noresto');
         }
-        return view('admin.data.restos.edit', compact('resto'));
+        return response()->json($resto->toArray());
+        //return view('admin.data.restos.edit', compact('resto'));
     }
 
     /**
@@ -169,7 +170,7 @@ class RestosController extends Controller
         $this->restosRepo->update($request, $id);
         $restos = $this->restosRepo->all();
         session()->flash('flash_message', trans('messages.resto_update_success'));
-        return redirect('admin/restos')->with('restos', $restos);
+        return redirect()->route('restos.index')->with('restos', $restos);
     }
 
     /**

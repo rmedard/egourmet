@@ -76,6 +76,23 @@ return [
     'choose_photo' => 'Ajouter une photo',
     'changer' => 'Changer',
     'remove' => 'Enlever',
-    'send' => 'Envoyer'
+    'send' => 'Envoyer',
 
+    /*Charts*/
+    'month.january' => 'Janvier',
+    'month.february' => 'Février',
+    'month.march' => 'Mars',
+    'month.april' => 'Avril',
+    'month.may' => 'Mai',
+    'month.june' => 'Juin',
+    'month.july' => 'Juillet',
+    'month.august' => 'Aôut',
+    'month.september' => 'Septembre',
+    'month.october' => 'Octobre',
+    'month.november' => 'Novembre',
+    'month.december' => 'Decembre',
+
+    'count.ratings.year' => 'Nbr d\'évaluations en :year',
+    'ratings.year' => 'Année',
+    'ratings.total' => 'Total des évaluations'
 ];

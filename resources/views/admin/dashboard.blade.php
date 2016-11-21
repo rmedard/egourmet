@@ -89,4 +89,14 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="card card-inverse">
+            <h3 class="card-header card-dark">Ratings</h3>
+            <div class="card-block">
+                <p>{{trans('gui.ratings.year')}}: <b id="year-nbr"></b></p>
+                <p>{{trans('gui.ratings.total')}}: <b id="total-ratings"></b></p>
+                <canvas id="ratingsChart"></canvas>
+            </div>
+        </div>
+    </div>
 @endsection

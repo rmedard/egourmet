@@ -35,3 +35,23 @@ $('#search-dish-admin').autocomplete({
         $('#selected-dish-admin').val(ui.item.id);
     }
 });
+
+$(function () {
+    var option = {
+        responsive: true,
+    };
+    var ctx = document.getElementById("ratingsChart").getContext('2d');
+    $.ajax({
+        url: '/admin/ratings_chart',
+        method: 'GET',
+        success: function (response) {
+            $('#year-nbr').text(response.custom.year);
+            $('#total-ratings').text(response.custom.yearCount);
+            var myBarChart = new Chart(ctx).Bar(response, option);
+        },
+        error: function(xhr){
+            var errors = xhr.responseJSON;
+            console.log('Error...')
+        }
+    });
+});

@@ -9,6 +9,7 @@
             <h1 class="display-4">{{trans('gui.add.dish')}}</h1>
             @if (count($errors) > 0)
                 <div class="alert alert-danger">
+                    <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

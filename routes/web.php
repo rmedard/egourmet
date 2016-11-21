@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
     Route::post('/search_dish_admin', 'SearchController@searchDish')->name('search.dish');
 
     Route::get('/ratings', 'RatingsController@ratings')->name('ratings.overview');
+
+    Route::get('/ratings_chart', 'RatingsController@ratingsChartData')->name('ratings.chart.data');
 });
 
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');

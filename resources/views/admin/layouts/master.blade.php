@@ -139,6 +139,7 @@
     <main>
         @if(session('flash_message'))
             <div class="alert alert-success">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
                 {{ session('flash_message') }}
             </div>
         @endif

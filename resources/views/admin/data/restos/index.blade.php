@@ -63,9 +63,7 @@
                 @endforeach
                 </tbody>
             </table>
-
                 {{ $restos->links('vendor.pagination.custom') }}
-
         </div>
     </div>
 @endsection
