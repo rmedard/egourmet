@@ -14,7 +14,7 @@
                     <tr>
                         <td></td>
                         <td><b>{{trans('gui.restaurants')}}</b></td>
-                        <td class="text-md-center"><b>{{trans('gui.reviews_count')}}</b></td>
+                        <td class="text-md-center"><b>{{trans('gui.reviews_count')}}</b> <span class="tag red">{{$ratingsTotalCount}}</span></td>
                         <td class="text-md-center"><b>{{trans('gui.reviews_avg')}}</b></td>
                     </tr>
                 </thead>

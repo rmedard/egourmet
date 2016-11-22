@@ -56,7 +56,8 @@ class RatingsController extends Controller
 
     public function ratings(){
         $restos = Resto::has('dishes')->orderBy('name', 'asc')->paginate(10);
-        return view('admin.data.ratings', compact('restos'));
+        $ratingsTotalCount = Rating::count();
+        return view('admin.data.ratings', compact('restos', 'ratingsTotalCount'));
     }
 
     public function ratingsChartData(){
