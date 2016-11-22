@@ -9,6 +9,8 @@ use App\Resto;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RatingsController extends Controller
 {
@@ -47,7 +49,7 @@ class RatingsController extends Controller
         $rating->dish_resto_id = $pivotId;
         $rating->value = empty($request->ratingvalue) ? 0 : $request->ratingvalue;
         $rating->email = $request->ratingemail;
-        $rating->comment = $request->ratingcomment;
+        $rating->comment = trim($request->ratingcomment);
         $rating->save();
         session()->flash('flash_message', trans('messages.evaluation_success'));
         $cuisines_list = $this->cuisinesRepo->all();
@@ -109,5 +111,29 @@ class RatingsController extends Controller
             ]
         ];
         return response()->json($data);
+    }
+
+    public function exportRatingsToExcel(){
+        $year = date('Y');
+        $data = DB::table('ratings')
+            ->join('dish_resto', 'ratings.dish_resto_id', '=', 'dish_resto.id')
+            ->join('restos', 'dish_resto.resto_id', '=', 'restos.id')
+            ->join('dishes', 'dish_resto.dish_id', '=', 'dishes.id')
+            ->select('restos.name as ' .trans('gui.restaurants'), 'dishes.name as ' .trans('gui.dishes'),
+                'ratings.email as ' .trans('gui.email'), 'ratings.comment as ' .trans('gui.comment'),
+                'ratings.value as ' .trans('gui.note'), 'ratings.created_at as ' .trans('gui.date'))
+            ->whereYear('ratings.created_at', '=', $year)->get();
+        $dataArray = [];
+        $dataArray[] = [trans('gui.restaurants'), trans('gui.dishes'), trans('gui.email'), trans('gui.comment'), trans('gui.note'), trans('gui.date')];
+        foreach ($data as $datum){
+            $dataArray[] = collect($datum)->values()->toArray();
+        }
+        Excel::create('Evaluations Report', function ($excel) use($dataArray, $year){
+            $excel->setCompany('eGourmet, Belgium');
+            $excel->setDescription(trans('ratings.report.desc', ['year' => $year]));
+            $excel->sheet('Evaluations-' . $year, function ($sheet) use ($dataArray){
+                $sheet->fromArray($dataArray, null, 'A1', false, false);
+            });
+        })->download('xlsx');
     }
 }

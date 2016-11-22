@@ -56,6 +56,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
     Route::get('/ratings', 'RatingsController@ratings')->name('ratings.overview');
 
     Route::get('/ratings_chart', 'RatingsController@ratingsChartData')->name('ratings.chart.data');
+
+    Route::get('/ratings_export', 'RatingsController@exportRatingsToExcel')->name('ratings.export.excel');
 });
 
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');

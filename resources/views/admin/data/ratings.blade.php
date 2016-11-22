@@ -4,8 +4,12 @@
 
 @section('content')
     <div class="row">
+        <div class="col-md-9">
             <h1 class="display-4">{{trans('gui.ratings_management')}}</h1>
-        <!-- /.col-lg-12 -->
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-outline-primary btn-rounded btn-sm waves-effect pull-right" href="{{route('ratings.export.excel')}}">{{trans('gui.export', ['type' => 'excel'])}}</a>
+        </div>
     </div>
     <div class="row">
         <div class="table-responsive">

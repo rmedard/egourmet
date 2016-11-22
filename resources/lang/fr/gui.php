@@ -57,6 +57,7 @@ return [
     'select.cuisine' => 'Sélectionnez le type de cuisine',
     'save' => 'Enregistrer',
     'cancel' => 'Annuler',
+    'export' => 'Exporter en :type',
 
     /*Details*/
     'cuisine' => 'Cuisine',
@@ -67,6 +68,7 @@ return [
     'address' => 'Adresse',
     'email' => 'Adresse email',
     'password' => 'Mot de passe',
+    'comment' => 'Commentaire',
     'website' => 'Website',
     'facebook' => 'Page facebook',
     'tel' => 'Téléphone',
@@ -77,6 +79,9 @@ return [
     'changer' => 'Changer',
     'remove' => 'Enlever',
     'send' => 'Envoyer',
+    'date' => 'Date',
+    'note' => 'Note',
+    'ratings.report.desc' => 'Raport des évaluations des plats - :year',
 
     /*Charts*/
     'month.january' => 'Janvier',
