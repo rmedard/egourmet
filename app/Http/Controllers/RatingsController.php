@@ -112,6 +112,8 @@ class RatingsController extends Controller
                 ]
             ];
             return response()->json($data);
+        }else{
+            abort(404);
         }
     }
 
