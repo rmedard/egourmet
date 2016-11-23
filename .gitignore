@@ -8,3 +8,4 @@ Homestead.yaml
 .DS_Store
 composer.lock
 /public/temp/*
+.htaccess

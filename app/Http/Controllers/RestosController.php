@@ -139,8 +139,8 @@ class RestosController extends Controller
             session()->forget('old_photo');
             $resto->mainphoto = config('constants.noresto');
         }
-        return response()->json($resto->toArray());
-        //return view('admin.data.restos.edit', compact('resto'));
+        //return response()->json($resto->toArray());
+        return view('admin.data.restos.edit', compact('resto'));
     }
 
     /**
