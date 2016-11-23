@@ -8,7 +8,7 @@
             <h1 class="display-4">{{trans('gui.ratings_management')}}</h1>
         </div>
         <div class="col-md-3">
-            <a class="btn btn-dark-green btn-rounded pull-right" href="{{route('ratings.export.excel')}}">{{trans('gui.export', ['type' => 'excel'])}}</a>
+            <a class="btn btn-dark-green btn-rounded btn-sm pull-right" href="{{route('ratings.export.excel')}}">{{trans('gui.export', ['type' => 'excel'])}}</a>
         </div>
     </div>
     <div class="row">
