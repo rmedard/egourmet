@@ -18,7 +18,7 @@ class CreateDishesTable extends Migration
             $table->bigInteger('cuisine_id')->unsigned()->index();
             $table->string('name')->unique();
             $table->string('mainphoto')->nullable();
-            $table->boolean('enabled');
+            $table->boolean('enabled')->default(1);
             $table->timestamps();
         });
     }
