@@ -20,10 +20,12 @@ class RestosRepository implements RestosContract
 
     private $s3;
     private $upload_dir;
+    private $tmpDir;
 
     public function __construct(){
         $this->s3 = Storage::disk('s3');
         $this->upload_dir = config('filesystems.disks.s3.folder').'/restos';
+        $this->tmpDir = 'tmp';
     }
 
     public function all()
@@ -72,11 +74,13 @@ class RestosRepository implements RestosContract
     public function processImage(Request $request){
         $photoFile = $request->file('mainphoto');
         $filename = 'resto_' . time() . '.jpg';
+        \Illuminate\Support\Facades\File::makeDirectory($this->tmpDir, 755, true, true);
+        //Storage::disk('public')->makeDirectory($this->tmpDir, 755, true);
         Image::make($photoFile)->resize(200, null, function ($constraint) {
             $constraint->aspectRatio();
-        })->save('temp/'.$filename);
-        $path = $this->s3->putFileAs($this->upload_dir, new File('temp/'.$filename), $filename, 'public');
-        Storage::delete('temp/'.$filename);
+        })->save($this->tmpDir.'/'.$filename);
+        $path = $this->s3->putFileAs($this->upload_dir, new File($this->tmpDir.'/'.$filename), $filename, 'public');
+        Storage::delete($this->tmpDir.'/'.$filename);
         return $path;
     }
 }

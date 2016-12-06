@@ -7,5 +7,5 @@ Homestead.yaml
 .env
 .DS_Store
 composer.lock
-/public/temp/*
+/public/tmp/*
 .htaccess
