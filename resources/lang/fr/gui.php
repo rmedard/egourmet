@@ -41,16 +41,17 @@ return [
     'ratings_management' => 'Les évaluations',
 
     /*Model*/
-    'model.name' => 'Nom',
     'model.photo' => 'Photo',
     'model.enabled' => 'Actif',
     'model.created_at' => 'Date de création',
     'model.updated_at' => 'Date de modification',
 
     /*Model operations*/
+    'name.resto' => 'Nom du restaurant',
     'add.resto' => 'Ajouter un restaurant',
     'edit.resto' => 'Modifier un restaurant',
     'search.resto' => 'Chercher un restaurant...',
+    'address.resto' => 'Adresse du restaurant',
     'add.dish' => 'Ajouter un plat',
     'edit.dish' => 'Modifier un plat',
     'search.dish' => 'Chercher un plat...',

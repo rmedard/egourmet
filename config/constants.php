@@ -7,6 +7,6 @@
  */
 
 return [
-    'noresto' => '/uploads/images/restos/noresto.png',
-    'nodish' => '/uploads/images/plats/nodish.png',
+    'norestoimage' => 'https://s3.eu-central-1.amazonaws.com/egourmetbct/core/resto/noresto.png',
+    'nodishimage' => 'https://s3.eu-central-1.amazonaws.com/egourmetbct/core/dish/nodish.png'
 ];

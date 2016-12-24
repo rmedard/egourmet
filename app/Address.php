@@ -13,6 +13,6 @@ class address extends Model
     }
 
     public function display(){
-        return $this->rue.' '.$this->numero.', '.$this->codepostal.' '.$this->commune;
+        return $this->rue . ' ' . $this->numero . ', ' . $this->codepostal . ' ' . $this->commune;
     }
 }

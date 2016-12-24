@@ -37,9 +37,8 @@
                 @foreach($dishes as $dish)
                     <tr>
                         <td>{{(($dishes->currentPage() - 1) * $dishes->perPage()) + $loop->index + 1}}</td>
-                        <?php $photo = empty($dish->mainphoto) ? Config::get('constants.nodish') : $dish->mainphoto ?>
                         <td>
-                            {!! Html::image($photo, $dish->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
+                            {!! Html::image($dish->getMainPhoto(), $dish->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
                         </td>
                         <td>{{$dish->name}}</td>
                         <td>{{$dish->cuisine->name}}</td>

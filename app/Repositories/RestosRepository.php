@@ -74,7 +74,7 @@ class RestosRepository implements RestosContract
     public function processImage(Request $request){
         $photoFile = $request->file('mainphoto');
         $filename = 'resto_' . time() . '.jpg';
-        \Illuminate\Support\Facades\File::makeDirectory($this->tmpDir, 755, true, true);
+        \Illuminate\Support\Facades\File::makeDirectory($this->tmpDir, 777, true, true);
         //Storage::disk('public')->makeDirectory($this->tmpDir, 755, true);
         Image::make($photoFile)->resize(200, null, function ($constraint) {
             $constraint->aspectRatio();

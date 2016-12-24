@@ -47,7 +47,6 @@ class HomeController extends Controller
     public function index()
     {
         $dishes = Dish::where('enabled', 1)->get();
-        //$dishes = Resto::belongsToMany(Dish::class)->wherePivot('enabled', 1);
         $dishes_list = Dish::where('enabled', 1)->pluck('name', 'id');
         $restos_list = Resto::where('enabled', 1)->pluck('name', 'id');
         return view('welcome', compact('dishes', 'dishes_list', 'restos_list'));
@@ -130,5 +129,11 @@ class HomeController extends Controller
     public function homeform(){
         $cuisines_list = $this->cuisinesRepo->all();
         return view('homeform', compact('message', 'cuisines_list'));
+    }
+
+    public function laterhome(){
+        $dishes = null;
+        $message = $this->message;
+        return view('home', compact('dishes', 'message'));
     }
 }

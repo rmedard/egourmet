@@ -63,3 +63,5 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function (){
 Route::post('messages/store', 'MessagesController@store')->name('messages.store');
 Route::post('/resto_post', 'RestosController@store')->name('any.restos.store');
 Route::post('/dish_post', 'DishesController@store')->name('any.dishes.store');
+
+Route::get('/laterhome', 'HomeController@laterhome')->name('later.home');

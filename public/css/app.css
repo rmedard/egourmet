@@ -2,13 +2,18 @@
 html {
   position: relative;
   min-height: 100%; }
+  html main div.container {
+    padding-top: 40px; }
 
 body {
   font-family: "Open Sans", sans-serif;
-  padding-top: 80px;
+  padding-top: 60px;
   background: #f1f1f1 url("../images/body-bg.png");
   /* Margin bottom by footer height */
   margin-bottom: 120px; }
+
+.pac-container {
+  z-index: 100000; }
 
 .footer {
   position: absolute;
@@ -22,10 +27,8 @@ body {
 
 /*Search bar*/
 @media (min-width: 767px) {
-  #search-dish-group, #search-resto-group {
-    width: 40%; }
-    #search-dish-group input, #search-resto-group input {
-      width: 100%; } }
+  #search-dish-group input, #search-resto-group input {
+    width: 100%; } }
 
 /*Rating*/
 .rating-symbol {
@@ -64,8 +67,10 @@ body {
   padding-bottom: 50px;
   text-align: center;
   color: #f8f8f8;
-  background: url(../images/core/restaurant_small.jpg) no-repeat center center;
+  background: url("https://s3.eu-central-1.amazonaws.com/egourmetbct/core/app/restaurant_small.jpg") no-repeat center center fixed;
   background-size: cover; }
+  .intro-header .container div.card#main-search-form {
+    background-color: rgba(255, 255, 255, 0.8); }
 
 .intro-message {
   position: relative;

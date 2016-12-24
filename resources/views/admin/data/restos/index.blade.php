@@ -38,9 +38,8 @@
                 @foreach($restos as $resto)
                     <tr>
                         <td>{{(($restos->currentPage() - 1) * $restos->perPage()) + $loop->index + 1}}</td>
-                        <?php $photo = empty($resto->mainphoto) ? Config::get('constants.noresto') : $resto->getMainPhoto() ?>
                         <td>
-                            {!! Html::image($photo, $resto->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
+                            {!! Html::image($resto->getMainPhoto(), $resto->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
                         </td>
                         <td>{{$resto->name}}</td>
                         <td>

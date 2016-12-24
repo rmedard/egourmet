@@ -35,6 +35,8 @@ class resto extends Model
         $s3 = Storage::disk('s3');
         if(!empty($this->mainphoto) and $s3->exists($this->mainphoto)){
             return $s3->url($this->mainphoto);
+        }else{
+            return config('constants.norestoimage');
         }
     }
 
