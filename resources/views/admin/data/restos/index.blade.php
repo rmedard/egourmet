@@ -27,7 +27,7 @@
                     <tr>
                         <th>#</th>
                         <th>{{trans('gui.model.photo')}}</th>
-                        <th>{{trans('gui.model.name')}}</th>
+                        <th>{{trans('gui.name.resto')}}</th>
                         <th>{{trans('gui.address')}}</th>
                         <th>{{trans('gui.website')}}</th>
                         <th>{{trans('gui.model.enabled')}}</th>
@@ -51,6 +51,7 @@
                         <td>{{$resto->website}}</td>
                         <td>{{$resto->enabled ? trans('gui.yes') : trans('gui.no')}}</td>
                         <td>
+                            <?php session(['pagenumber' => $restos->currentPage()]) ?>
                             <a href="{{route('restos.edit', ['id' => $resto->id])}}" class="teal-text" data-toggle="tooltip" data-placement="top" title="{{trans('gui.edit')}}">
                                 <i class="fa fa-pencil"></i>
                             </a>

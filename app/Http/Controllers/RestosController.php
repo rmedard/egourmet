@@ -105,6 +105,7 @@ class RestosController extends Controller
             $results[] = ['id'=>$resto->id,'value'=>$resto->name];
             return $results;
         }else{
+            dd(session('pagenumber'));
             $restos = $this->restosRepo->all();
             session()->flash('flash_message', trans('messages.resto_creat_success'));
             return view('admin.data.restos.index', compact('restos'));
@@ -168,9 +169,10 @@ class RestosController extends Controller
             session()->forget('old_photo');
         }
         $this->restosRepo->update($request, $id);
-        $restos = $this->restosRepo->all();
+        //$restos = $this->restosRepo->all();
         session()->flash('flash_message', trans('messages.resto_update_success'));
-        return redirect()->route('restos.index')->with('restos', $restos);
+        //return redirect()->route('restos.index')->with('restos', $restos);
+        return redirect('/admin/restos?page=' . session('pagenumber'));
     }
 
     /**
