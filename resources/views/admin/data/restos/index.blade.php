@@ -54,7 +54,7 @@
                             <a href="{{route('restos.edit', ['id' => $resto->id])}}" class="teal-text" data-toggle="tooltip" data-placement="top" title="{{trans('gui.edit')}}">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <a class="red-text" data-toggle="tooltip" data-placement="top" title="{{trans('gui.delete')}}">
+                            <a class="{{empty($resto->slug) ? 'orange-text' : 'red-text'}}" data-toggle="tooltip" data-placement="top" title="{{trans('gui.delete')}}">
                                 <i class="fa fa-times"></i>
                             </a>
                         </td>
