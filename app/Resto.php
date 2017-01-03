@@ -31,10 +31,16 @@ class resto extends Model
             ->withPivot('id', 'enabled', 'average_rate', 'reviews_count');
     }
 
-    public function getMainPhoto(){
+    public function getMainPhotoURL(){
         $s3 = Storage::disk('s3');
-        if(!empty($this->mainphoto) and $s3->exists($this->mainphoto)){
-            return $s3->url($this->mainphoto);
+        if(!empty($this->mainphoto)){
+            if(filter_var($this->mainphoto, FILTER_VALIDATE_URL)){
+                return $this->mainphoto;
+            }elseif ($s3->exists($this->mainphoto)){
+                return $s3->url($this->mainphoto);
+            }else{
+                return config('constants.norestoimage');
+            }
         }else{
             return config('constants.norestoimage');
         }

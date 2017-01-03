@@ -39,7 +39,7 @@
                     <tr>
                         <td>{{(($restos->currentPage() - 1) * $restos->perPage()) + $loop->index + 1}}</td>
                         <td>
-                            {!! Html::image($resto->getMainPhoto(), $resto->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
+                            {!! Html::image($resto->getMainPhotoURL(), $resto->name, ['class' => 'media-object', 'width' => 50, 'height' => 'auto']) !!}
                         </td>
                         <td>{{$resto->name}}</td>
                         <td>

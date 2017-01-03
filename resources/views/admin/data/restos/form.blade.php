@@ -27,7 +27,7 @@
     <div class="col-md-4" style="text-align: center;">
         <div class="fileinput fileinput-new" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                {!! Html::image(isset($resto) ? $resto->getMainPhoto() : config('constants.norestoimage'), 'Choose photo', ['width' => 150, 'height' => 'auto']) !!}
+                {!! Html::image(isset($resto) ? $resto->getMainPhotoURL() : config('constants.norestoimage'), 'Choose photo', ['width' => 150, 'height' => 'auto']) !!}
             </div>
             <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 170px;"></div>
             <div class="text-center">
