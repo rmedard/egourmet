@@ -169,10 +169,8 @@ class RestosController extends Controller
             session()->forget('old_photo');
         }
         $this->restosRepo->update($request, $id);
-        //$restos = $this->restosRepo->all();
         session()->flash('flash_message', trans('messages.resto_update_success'));
-        //return redirect()->route('restos.index')->with('restos', $restos);
-        return redirect('/admin/restos?page=' . session('pagenumber'));
+        return redirect('admin/restos?page=' . session('pagenumber'));
     }
 
     /**

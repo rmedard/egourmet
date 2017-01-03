@@ -25,7 +25,7 @@
                 </fieldset>
                 <div>
                     <button class="btn btn-unique btn-rounded btn-sm" type="submit">{{trans('gui.save')}}</button>
-                    <a class="btn btn-danger btn-rounded btn-sm" href="{{route('restos.index')}}">{{trans('gui.cancel')}}</a>
+                    <a class="btn btn-danger btn-rounded btn-sm" href="{{url('admin/restos?page=' . session('pagenumber'))}}">{{trans('gui.cancel')}}</a>
                 </div>
             {!! Form::close() !!}
         </div>
