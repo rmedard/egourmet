@@ -59,7 +59,6 @@
     };
 
     google.maps.event.addDomListener(window, 'load', function () {
-        console.log("Search triggered...");
         var autocomplete = new google.maps.places.Autocomplete(input, options);
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
             var place = autocomplete.getPlace();

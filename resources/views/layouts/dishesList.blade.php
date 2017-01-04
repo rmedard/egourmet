@@ -6,7 +6,7 @@
                         <div class="ih-item square effect6 from_top_and_bottom">
                             <a href="http://{{$resto->website}}">
                                 <div class="img">
-                                    {!! Html::image($resto->getMainPhoto(), $resto->name, ['class' => 'img-rounded', 'id' => 'resto-' . $resto->id . '-img']) !!}
+                                    {!! Html::image($resto->getMainPhotoURL(), $resto->name, ['class' => 'img-rounded', 'id' => 'resto-' . $resto->id . '-img']) !!}
                                 </div>
                                 <div class="info">
                                     <h3>{{$resto->name}}</h3>
