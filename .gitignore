@@ -5,6 +5,7 @@
 Homestead.json
 Homestead.yaml
 .env
+.DS_Store
 composer.lock
 /public/tmp/*
 .htaccess
