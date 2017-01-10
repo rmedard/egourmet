@@ -36,7 +36,7 @@ class HomeController extends Controller
     public function home(){
         $dishes = null;
         $message = $this->message;
-        return view('home', compact('dishes', 'message'));
+        return view('home', compact('dishes', 'message', 'contactEmailMessage'));
     }
 
     /**
@@ -56,7 +56,7 @@ class HomeController extends Controller
         $persist_type = $request->input('persist_type');
         if(strcmp($persist_type, 'rating') == 0){
             $rating = ['dish_resto_id' => $request->input('dish_resto_id'),
-                'email' => $request->input('rating-email'),
+                'emails' => $request->input('rating-emails'),
                 'value' => $request->input('rating-value'),
                 'comment' => $request->input('rating-comment')];
             $ratingStored = Rating::create($rating);
@@ -134,6 +134,7 @@ class HomeController extends Controller
     public function laterhome(){
         $dishes = null;
         $message = $this->message;
+        //dd(isset($message));
         return view('home', compact('dishes', 'message'));
     }
 }

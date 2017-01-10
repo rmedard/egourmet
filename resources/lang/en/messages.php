@@ -12,8 +12,8 @@ return [
     'searchdish_exists' => 'Le plat que vous avez saisi n\'existe pas ',
     'searchresto_required' => 'Il faut préciser le restaurant',
     'searchresto_exists' => 'Le restaurant que vous avez saisi n\'existe pas',
-    'rating_email_required' => 'Votre email est obligatoire',
-    'rating_email_email' => 'Votre email n\'est pas correct',
+    'rating_email_required' => 'Votre emails est obligatoire',
+    'rating_email_email' => 'Votre emails n\'est pas correct',
 
     /*Success messages*/
     'declaration_success' => 'Merci, votre déclaration est enregistée!'

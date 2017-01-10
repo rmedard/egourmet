@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactEgourmet;
 use App\Message;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Mail;
 
 class MessagesController extends Controller
 {
@@ -18,19 +20,38 @@ class MessagesController extends Controller
 
         $rules = [
             'name' => 'required',
-            'email' => 'required|email',
+            'emails' => 'required|emails',
             'message' => 'required'
         ];
 
         $messages = [
             'name.required' => 'Votre nom est obligatoire.',
-            'email.required' => 'Votre email est obligatoire.',
-            'email.email' => 'Votre email est incorect.',
+            'emails.required' => 'Votre emails est obligatoire.',
+            'emails.emails' => 'Votre emails est incorect.',
             'message.required' => 'Vous devez indiquer votre message.'
         ];
 
         $this->validate($request, $rules, $messages);
 
         return Message::create($request->all());
+    }
+
+    public function sendContactEmail(Request $request){
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|emails',
+            'message' => 'required'
+        ];
+
+        $messages = [
+            'name.required' => 'Votre nom est obligatoire.',
+            'email.required' => 'Votre emails est obligatoire.',
+            'email.emails' => 'Votre emails est incorect.',
+            'message.required' => 'Vous devez indiquer votre message.'
+        ];
+
+        $this->validate($request, $rules, $messages);
+
+        Mail::from($request->emails)->send(new ContactEgourmet($request->message));
     }
 }

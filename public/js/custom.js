@@ -28,12 +28,12 @@ $('.rating').rating({
 
 $('.alert-success').delay(3000).slideUp(300);
 
-$('.rate-email').hide();
+$('.rate-emails').hide();
 $('.resto-main-details').hide();
 
 $('.rate-input > span').click(function(){
     var parentId = $(this).parent().attr('id');
-    var emailInput = $('#' + parentId + ' > div.rate-email');
+    var emailInput = $('#' + parentId + ' > div.rate-emails');
     emailInput.show('slow');
     emailInput.find('.rating-comment-input').focus();
 });
@@ -54,8 +54,8 @@ $('.rating-form').submit(function (e) {
             var result = ($(response)[0]);
             $('#rate-' + result.dish_resto_id).find('.value').text(result.rate_average);
             $('#reviews-' + result.dish_resto_id).find('.value').text(result.reviews_count);
-            $('#rator-email-' + result.dish_resto_id).val('');
-            $('.rate-email').hide();
+            $('#rator-emails-' + result.dish_resto_id).val('');
+            $('.rate-emails').hide();
         },
         error: function (xhr) {
             var errors = xhr.responseJSON;
@@ -102,7 +102,7 @@ $('#search-resto').autocomplete({
 });
 
 $('#search-btn-main').on('click', function (e) {
-    //e.preventDefault();
+    e.preventDefault();
     var offset = $('#intro-message-main').height();
     return $('html, body').animate({
         scrollTop: $(this.hash).offset().top - offset
@@ -137,7 +137,6 @@ $('#message-form-id').submit(function(e){
                     alertMessage += '<li>' + value + '</li>';
                 });
                 alertMessage += '</ul></div>';
-
                 var existingError = $('.contact-form-msg');
                 if(existingError.length){
                     existingError.replaceWith(alertMessage);
@@ -165,7 +164,6 @@ $('#resto-form-modal-id').submit(function(e) {
         url = form.attr('action'),
         method = form.attr('method'),
         formData = new FormData($(this)[0]);
-    //console.log(formData.getAll('mainphoto'));
     $.ajax({
         url: url,
         method: method,

@@ -17,7 +17,7 @@
                         <div class="md-form{{ $errors->has('email') ? ' has-error' : '' }}">
                             <i class="fa fa-envelope prefix"></i>
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" autofocus placeholder="{{trans('gui.email')}}">
-                            @if ($errors->has('email'))
+                            @if ($errors->has('emails'))
                                 <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>

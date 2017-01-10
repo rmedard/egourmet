@@ -65,3 +65,7 @@ Route::post('/resto_post', 'RestosController@store')->name('any.restos.store');
 Route::post('/dish_post', 'DishesController@store')->name('any.dishes.store');
 
 Route::get('/laterhome', 'HomeController@laterhome')->name('later.home');
+
+/*Emailing*/
+Route::get('/sendwelcomemail', 'EmailsController@sendWelcomeMail')->name('mails.send.welcome');
+Route::post('/sendcontactemail', 'EmailsController@sendContactEmail')->name('mails.send.contact');

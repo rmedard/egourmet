@@ -93,8 +93,23 @@
         <div class="card card-inverse">
             <h4 class="card-header">Ratings <a href="{{route('ratings.overview')}}" class="pull-right text-white">Voir les détails  <i class="fa fa-arrow-circle-right"></i></a></h4>
             <div class="card-block">
-                <h6>{{trans('gui.ratings.year')}}: <span class="tag green" id="year-nbr"></span></h6>
-                <h6>{{trans('gui.ratings.total')}}: <span class="tag blue" id="total-ratings"></span></h6>
+                <div class="col-md-2">
+                    <div class="btn-group">
+                        <button class="btn btn-elegant btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sélectionner une année
+                        </button>
+                        <div class="dropdown-menu">
+                            @for($year = date('Y'); $year >= 2016; $year--)
+                                <a class="dropdown-item" href="#">{{$year}}</a>
+                            @endfor
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <h6>{{trans('gui.ratings.year')}}: <span class="tag green" id="year-nbr"></span></h6>
+                    <h6>{{trans('gui.ratings.total')}}: <span class="tag blue" id="total-ratings"></span></h6>
+                </div>
+
                 <canvas id="ratingsChart"></canvas>
             </div>
         </div>
