@@ -98,12 +98,12 @@
                         <a class="btn btn-small default-color">
                             <i>{{$year}}</i>
                         </a>
-                        <span class="counter">22</span>
+                        <span class="counter">{{$ratingsPerYear[$year]}}</span>
                     @endfor
                 </div>
 
                 <div class="col-md-6">
-                    <h2>{{trans('gui.ratings.total')}}: <span class="tag default-color" id="total-ratings"></span></h2>
+                    <h2>{{trans('gui.ratings.total')}}: <span class="tag default-color" id="total-ratings">{{$totalRatingsCount}}</span></h2>
                 </div>
                 <canvas id="ratingsChart"></canvas>
             </div>
@@ -120,7 +120,7 @@
                 method: 'GET',
                 success: function (response) {
                    // $('#year-nbr').text(response.custom.year);
-                    $('#total-ratings').text(response.custom.yearCount);
+                    // $('#total-ratings').text(response.custom.yearCount);
                     var myBarChart = new Chart(ctx).Bar(response, option);
                 },
                 error: function(xhr){
