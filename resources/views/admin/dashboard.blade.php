@@ -93,23 +93,18 @@
         <div class="card card-inverse">
             <h4 class="card-header">Ratings <a href="{{route('ratings.overview')}}" class="pull-right text-white">Voir les détails  <i class="fa fa-arrow-circle-right"></i></a></h4>
             <div class="card-block">
-                <div class="col-md-2">
-                    <div class="btn-group">
-                        <button class="btn btn-elegant btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Sélectionner une année
-                        </button>
-                        <div class="dropdown-menu">
-                            @for($year = date('Y'); $year >= 2016; $year--)
-                                <a class="dropdown-item" href="#">{{$year}}</a>
-                            @endfor
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <h6>{{trans('gui.ratings.year')}}: <span class="tag green" id="year-nbr"></span></h6>
-                    <h6>{{trans('gui.ratings.total')}}: <span class="tag blue" id="total-ratings"></span></h6>
+                <div class="col-md-6">
+                    @for($year = date('Y'); $year >= 2016; $year--)
+                        <a class="btn btn-small default-color">
+                            <i>{{$year}}</i>
+                        </a>
+                        <span class="counter">22</span>
+                    @endfor
                 </div>
 
+                <div class="col-md-6">
+                    <h2>{{trans('gui.ratings.total')}}: <span class="tag default-color" id="total-ratings"></span></h2>
+                </div>
                 <canvas id="ratingsChart"></canvas>
             </div>
         </div>
@@ -124,7 +119,7 @@
                 url: '/admin/ratings_chart',
                 method: 'GET',
                 success: function (response) {
-                    $('#year-nbr').text(response.custom.year);
+                   // $('#year-nbr').text(response.custom.year);
                     $('#total-ratings').text(response.custom.yearCount);
                     var myBarChart = new Chart(ctx).Bar(response, option);
                 },
