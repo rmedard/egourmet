@@ -12,36 +12,37 @@
     <input type="hidden" id="resto-form-commune" name="commune" value="{{isset($resto) ? $resto->address->commune : null}}">
     <input type="hidden" id="resto-form-zip" name="zip" value="{{isset($resto) ? $resto->address->codepostal : null}}">
 </div>
-<div class="row">
-    <div class="col-md-8">
-        <div class="md-form">
-            {{Form::text('tel', null, ['class' => 'form-control validate', 'id' => 'resto-form-tel', 'placeholder' =>trans('gui.tel')])}}
-        </div>
-        <div class="md-form">
-            {{Form::text('website', null, ['class' => 'form-control validate', 'id' => 'resto-form-website', 'placeholder' =>trans('gui.website')])}}
-        </div>
-        <div class="md-form">
-            {{Form::text('facebook', null, ['class' => 'form-control validate', 'id' => 'resto-form-facebook', 'placeholder' =>trans('gui.facebook')])}}
-        </div>
-    </div>
-    <div class="col-md-4" style="text-align: center;">
-        <div class="fileinput fileinput-new" data-provides="fileinput">
-            <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
-                {!! Html::image(isset($resto) ? $resto->getMainPhotoURL() : config('constants.norestoimage'), 'Choose photo', ['width' => 150, 'height' => 'auto']) !!}
+@if(Auth::check())
+    <div class="row">
+        <div class="col-md-8">
+            <div class="md-form">
+                {{Form::text('tel', null, ['class' => 'form-control validate', 'id' => 'resto-form-tel', 'placeholder' =>trans('gui.tel')])}}
             </div>
-            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 170px;"></div>
-            <div class="text-center">
-                <span class="btn btn-sm btn-default btn-file">
-                    <span class="fileinput-new">{{trans('gui.choose_photo')}}</span>
-                    <span class="fileinput-exists">{{trans('gui.changer')}}</span>
-                    {!! Form::file('mainphoto') !!}
-                </span>
-                <a href="_" class="btn btn-sm btn-default fileinput-exists" data-dismiss="fileinput">{{trans('gui.remove')}}</a>
+            <div class="md-form">
+                {{Form::text('website', null, ['class' => 'form-control validate', 'id' => 'resto-form-website', 'placeholder' =>trans('gui.website')])}}
+            </div>
+            <div class="md-form">
+                {{Form::text('facebook', null, ['class' => 'form-control validate', 'id' => 'resto-form-facebook', 'placeholder' =>trans('gui.facebook')])}}
             </div>
         </div>
+        <div class="col-md-4" style="text-align: center;">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" style="width: 150px; height: 150px;">
+                    {!! Html::image(isset($resto) ? $resto->getMainPhotoURL() : config('constants.norestoimage'), 'Choose photo', ['width' => 150, 'height' => 'auto']) !!}
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 170px;"></div>
+                <div class="text-center">
+                    <span class="btn btn-sm btn-default btn-file">
+                        <span class="fileinput-new">{{trans('gui.choose_photo')}}</span>
+                        <span class="fileinput-exists">{{trans('gui.changer')}}</span>
+                        {!! Form::file('mainphoto') !!}
+                    </span>
+                    <a href="_" class="btn btn-sm btn-default fileinput-exists" data-dismiss="fileinput">{{trans('gui.remove')}}</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-
+@endif
 <script type="application/javascript">
     var input = document.getElementById('searchAddressId');
     //var input = $('#searchAddressId');
