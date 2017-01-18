@@ -5,7 +5,9 @@
         <div class="offset-md-2 col-md-8">
             <div class="card">
                 <div class="card-block">
-                        <h2 class="card-title text-md-center">{{trans('gui.donnez_evaluation')}}</h2>
+                    <h1 class="card-title text-md-center text-xs-center">{{trans('gui.donnez_evaluation')}}</h1>
+                    <p class="text-muted">Merci de prendre quelques minutes pour nous donner une évaluation sur les plats que vous avez mangé dernièrement dans un ou plusieurs restaurants.
+                        Cela nous aidera à mieux vous conseiller sur vos choix de plats et restaurants dans le futur.</p>
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
                             <ul>
