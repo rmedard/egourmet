@@ -8,7 +8,7 @@
         <title>eGourmet</title>
 
         <!-- Bootstrap -->
-        <link href="/assets/mdb/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/mdb/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Materialize -->
         <link href="/assets/mdb/css/mdb.min.css" rel="stylesheet">
