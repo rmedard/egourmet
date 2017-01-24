@@ -1,11 +1,20 @@
 @extends('layouts.app')
 @section('content')
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 <div class="container">
     <div class="row">
         <div class="offset-md-2 col-md-8">
             <div class="card">
                 <div class="card-block">
                     <h1 class="card-title text-md-center text-xs-center">{{trans('gui.donnez_evaluation')}}</h1>
+
                     <p class="text-muted">Merci de prendre quelques minutes pour nous donner une évaluation sur les plats que vous avez mangé dernièrement dans un ou plusieurs restaurants.
                         Cela nous aidera à mieux vous conseiller sur vos choix de plats et restaurants dans le futur.</p>
                     @if (count($errors) > 0)
@@ -50,10 +59,16 @@
 
                     </div>
 
-                    <div class="text-md-center">
+                    <div class="text-md-center text-xs-center">
                         <button class="btn btn-unique" type="submit">{{trans('gui.send')}}</button>
                     </div>
                     {!! Form::close() !!}
+
+                <!--Facebook-->
+                    <div class="fb-share-button" data-href="http://www.egourmet.be" data-layout="button_count" data-size="large" data-mobile-iframe="true">
+                        <a class="fb-xfbml-parse-ignore btn btn-fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egourmet.be%2F&amp;src=sdkpreparse" type="button">
+                            <i class="fa fa-facebook left"></i> Share</a>
+                    </div>
                 </div>
             </div>
         </div>
