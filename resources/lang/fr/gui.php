@@ -52,6 +52,7 @@ return [
     'edit.resto' => 'Modifier un restaurant',
     'search.resto' => 'Chercher un restaurant...',
     'address.resto' => 'Adresse du restaurant',
+    'name.dish' => 'Nom du plat',
     'add.dish' => 'Ajouter un plat',
     'edit.dish' => 'Modifier un plat',
     'search.dish' => 'Chercher un plat...',

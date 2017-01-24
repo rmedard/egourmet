@@ -108,7 +108,7 @@
                     {!! Form::open(['route' => 'any.dishes.store', 'method' => 'POST', 'id' => 'dish-form-modal-id']) !!}
                 <div class="modal-body">
                     <div class="md-form">
-                        {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'dish-name-id', 'placeholder' => trans('gui.model.name')])}}
+                        {{Form::text('name', null, ['class' => 'form-control validate', 'id' => 'dish-name-id', 'placeholder' => trans('gui.name.dish')])}}
                     </div>
                     <div class="md-form">
                         {{Form::select('cuisine', $cuisines_list, isset($dish) ? $dish->cuisine->id : null, ['class' => 'mdb-select colorful-select dropdown-dark', 'id' => 'modal-dish-cuisine-id', 'placeholder' => trans('gui.select.cuisine')])}}
