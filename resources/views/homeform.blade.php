@@ -64,10 +64,10 @@
                     </div>
                     {!! Form::close() !!}
 
-                <!--Facebook-->
-                    <div class="fb-share-button" data-href="http://www.egourmet.be" data-layout="button_count" data-size="large" data-mobile-iframe="true">
-                        <a class="fb-xfbml-parse-ignore btn btn-fb" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egourmet.be%2F&amp;src=sdkpreparse" type="button">
-                            <i class="fa fa-facebook left"></i> Share</a>
+                    <div class="card-data grey">
+                        <div class="fb-share-button" data-href="http://www.egourmet.be" data-layout="button_count" data-size="large" data-mobile-iframe="true">
+                            <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwww.egourmet.be%2F&amp;src=sdkpreparse">Share</a>
+                        </div>
                     </div>
                 </div>
             </div>
