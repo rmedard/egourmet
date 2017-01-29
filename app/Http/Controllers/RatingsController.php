@@ -118,24 +118,25 @@ class RatingsController extends Controller
     }
 
     public function exportRatingsToExcel(){
-        $year = date('Y');
+        //$year = date('Y');
         $data = DB::table('ratings')
             ->join('dish_resto', 'ratings.dish_resto_id', '=', 'dish_resto.id')
             ->join('restos', 'dish_resto.resto_id', '=', 'restos.id')
             ->join('dishes', 'dish_resto.dish_id', '=', 'dishes.id')
             ->select('restos.name as ' .trans('gui.restaurants'), 'dishes.name as ' .trans('gui.dishes'),
                 'ratings.email as ' .trans('gui.email'), 'ratings.comment as ' .trans('gui.comment'),
-                'ratings.value as ' .trans('gui.note'), 'ratings.created_at as ' .trans('gui.date'))
-            ->whereYear('ratings.created_at', '=', $year)->get();
+                'ratings.value as ' .trans('gui.note'), 'ratings.created_at as ' .trans('gui.date'))->get();
+            //->whereYear('ratings.created_at', '=', $year)
+            //->get();
         $dataArray = [];
         $dataArray[] = [trans('gui.restaurants'), trans('gui.dishes'), trans('gui.email'), trans('gui.comment'), trans('gui.note'), trans('gui.date')];
         foreach ($data as $datum){
             $dataArray[] = collect($datum)->values()->toArray();
         }
-        Excel::create('Evaluations Report', function ($excel) use($dataArray, $year){
+        Excel::create('Evaluations Report', function ($excel) use($dataArray){
             $excel->setCompany('eGourmet, Belgium');
-            $excel->setDescription(trans('ratings.report.desc', ['year' => $year]));
-            $excel->sheet('Evaluations-' . $year, function ($sheet) use ($dataArray){
+            $excel->setDescription(trans('gui.ratings.report.desc'));
+            $excel->sheet('Evaluations', function ($sheet) use ($dataArray){
                 $sheet->fromArray($dataArray, null, 'A1', false, false);
             });
         })->download('xlsx');

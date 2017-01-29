@@ -83,7 +83,7 @@ return [
     'send' => 'Envoyer',
     'date' => 'Date',
     'note' => 'Note',
-    'ratings.report.desc' => 'Raport des évaluations des plats - :year',
+    'ratings.report.desc' => 'Raport des évaluations des plats',
 
     /*Charts*/
     'month.january' => 'Janvier',
